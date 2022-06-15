@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import styles from './AddTask.module.css';
 import { Button } from '../../commons/Button/Button';
 import { sendTask } from '../../../store/sendTask';
@@ -10,6 +11,7 @@ export function AddTask() {
   const jwt = useSelector((state) => state.authSlice.jwt);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [taskAdded, setTaskAdded] = useState(false);
 
   const titleHandler = (e) => {
     setTitle(e.target.value);
@@ -21,6 +23,7 @@ export function AddTask() {
   const fetchNewTask = (e) => {
     e.preventDefault();
     dispatch(sendTask({ title, content }, jwt));
+    setTaskAdded(true);
   };
 
   return (
@@ -37,6 +40,7 @@ export function AddTask() {
         <Button text="Add" />
       </form>
       <p>{errorNotification}</p>
+      {taskAdded && <Navigate to="/tasks" />}
     </div>
   );
 }

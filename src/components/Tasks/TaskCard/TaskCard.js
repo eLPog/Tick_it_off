@@ -18,7 +18,6 @@ export function TaskCard(props) {
       <div className={styles.content}>
         <p>{props.content}</p>
       </div>
-
     </li>
   );
 }
