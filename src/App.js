@@ -5,7 +5,7 @@ import { Header } from './components/Header/Header';
 import { LoginForm } from './components/Forms/LoginForm/LoginForm';
 import { StartPage } from './components/StartPage/StartPage';
 import { UserStartPage } from './components/User/UserStartPage/UserStartPage';
-import { TasksList } from './components/Tasks/TasksList';
+import { TasksList } from './components/Tasks/TasksList/TasksList';
 import { Logout } from './components/Logout/Logout';
 
 function App() {
