@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import icon1 from '../../images/icon1.png';
 import styles from './Header.module.css';
 
@@ -10,10 +11,13 @@ export function Header() {
       <nav className={styles.nav}>
         <ul>
           <li>
-            About App
+            <NavLink to="/aboutApp">About App</NavLink>
           </li>
           <li>
-            Login
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Main Page</NavLink>
           </li>
 
         </ul>
