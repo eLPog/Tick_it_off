@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { sendLoginData } from '../../../store/authSlice';
 import { StartPage } from '../../StartPage/StartPage';
@@ -45,7 +46,7 @@ export function LoginForm() {
           <p>{errorNotification}</p>
         </div>
       </>
-    ) : <StartPage />
+    ) : <Navigate to="/" />
 
   );
 }
