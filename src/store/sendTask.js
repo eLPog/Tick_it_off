@@ -1,11 +1,9 @@
 import { authSliceActions } from './authSlice';
 
 export const sendTask = (newTask, jwt) => async (dispatch) => {
-  console.log('jeden');
-  console.log('dwa');
-
+  dispatch(authSliceActions.setNotification(''));
   try {
-    await fetch('http://localhost:3001/v1/api/tasks', {
+    const res = await fetch('http://localhost:3001/v1/api/tasks', {
       method: 'POST',
       headers: {
         authorization: `Bearer ${jwt}`,
@@ -16,7 +14,17 @@ export const sendTask = (newTask, jwt) => async (dispatch) => {
         content: newTask.content,
       }),
     });
-    dispatch(authSliceActions.addTask({ title: newTask.title, content: newTask.content }));
+    if (!res.ok) {
+      dispatch(authSliceActions.setNotification('Error adding task'));
+    }
+    const tasks = await fetch('http://localhost:3001/v1/api/tasks', {
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${jwt}`,
+      },
+    });
+    const allTasks = await tasks.json();
+    dispatch(authSliceActions.setTasks(allTasks));
   } catch (err) {
     console.log(err);
   }

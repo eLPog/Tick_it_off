@@ -1,7 +1,6 @@
 import styles from './TaskCard.module.css';
 
 export function TaskCard(props) {
-  console.log(props.title);
   return (
     <li className={styles.item}>
       <div className={styles.title}>

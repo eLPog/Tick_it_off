@@ -6,6 +6,7 @@ import { sendTask } from '../../../store/sendTask';
 
 export function AddTask() {
   const dispatch = useDispatch();
+  const errorNotification = useSelector((state) => state.authSlice.notification);
   const jwt = useSelector((state) => state.authSlice.jwt);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -35,6 +36,7 @@ export function AddTask() {
         <textarea id="taskContent" onChange={contentHandler} />
         <Button text="Add" />
       </form>
+      <p>{errorNotification}</p>
     </div>
   );
 }
