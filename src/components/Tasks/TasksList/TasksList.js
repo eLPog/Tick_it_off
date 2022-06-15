@@ -6,7 +6,7 @@ import { getTasks } from '../../../store/getTasks';
 
 export function TasksList() {
   const tasks = useSelector((state) => state.authSlice.user.tasks);
-  const jwt = useSelector((state) => state.authSlice.jwt);
+  const { jwt, notification } = useSelector((state) => state.authSlice);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTasks(jwt));
@@ -23,6 +23,7 @@ export function TasksList() {
 
   return (
     <>
+      {notification && <p>{notification}</p>}
       <ul className={styles.list}>
         {tasksList}
 
