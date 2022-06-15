@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import icon1 from '../../images/icon1.png';
 import styles from './Header.module.css';
 
 export function Header() {
+  const isLogged = useSelector((state) => state.authSlice.isLogged);
   return (
     <div className={styles.headerContainer}>
       <div className={styles.title}>
@@ -14,7 +16,7 @@ export function Header() {
             <NavLink to="/aboutApp">About App</NavLink>
           </li>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            {!isLogged ? <NavLink to="/login">Login</NavLink> : 'Logout'}
           </li>
           <li>
             <NavLink to="/">Main Page</NavLink>
