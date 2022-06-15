@@ -20,6 +20,9 @@ const menuForLogged = (
       <li>
         <NavLink to="/tasks">Tasks</NavLink>
       </li>
+      <li>
+        <NavLink to="/add">Add Task</NavLink>
+      </li>
 
     </ul>
   </nav>
