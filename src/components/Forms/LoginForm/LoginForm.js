@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import styles from './LoginForm.module.css';
-import { authSliceActions } from '../../../store/authSlice';
+import { authSliceActions, sendLoginData } from '../../../store/authSlice';
 
 export function LoginForm() {
-  const stan = useSelector((state) => state.authSlice);
+  const jwt = useSelector((state) => state.authSlice.jwt);
+  console.log(jwt);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,9 +18,10 @@ export function LoginForm() {
 
   const formSend = (e) => {
     e.preventDefault();
-    dispatch(authSliceActions.loginUser({
-      email, password,
-    }));
+    dispatch(sendLoginData({ email, password }));
+    // dispatch(authSliceActions.loginUser({
+    //   email, password,
+    // }));
   };
 
   return (
