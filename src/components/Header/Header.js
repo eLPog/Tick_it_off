@@ -10,7 +10,9 @@ const menuForLogged = (
         <NavLink to="/aboutApp">About App</NavLink>
       </li>
       <li>
-        <NavLink to="/logout">Logout</NavLink>
+        <NavLink to="/logout">
+          LogOut
+        </NavLink>
       </li>
       <li>
         <NavLink to="/user">User</NavLink>

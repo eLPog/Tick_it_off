@@ -24,10 +24,10 @@ const authSlice = createSlice({
       state.user.lastLogin = action.payload.lastLogin;
       state.user.registerAt = action.payload.registerAt;
       state.user.userID = action.payload.userID;
-      state.isLogged = true;
     },
     setJwt(state, action) {
       state.jwt = action.payload;
+      action.payload ? state.isLogged = true : state.isLogged = false;
     },
     setNotification(state, action) {
       state.notification = action.payload;
@@ -58,7 +58,6 @@ export const sendLoginData = (data) => async (dispatch) => {
       return;
     }
     const jwt = await response.json();
-    console.log(`jwt ${jwt}`);
     dispatch(authSliceActions.setJwt(jwt));
     const userData = await fetch('http://localhost:3001/v1/api/user', {
       method: 'GET',
@@ -71,7 +70,6 @@ export const sendLoginData = (data) => async (dispatch) => {
       return;
     }
     const user = await userData.json();
-    console.log(`User data: ${user.email}`);
     dispatch(authSliceActions.setUserData({
       email: user.email,
       name: user.name,

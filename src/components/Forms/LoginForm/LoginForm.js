@@ -5,8 +5,6 @@ import styles from './LoginForm.module.css';
 import { sendLoginData } from '../../../store/authSlice';
 import { Button } from '../../commons/Button/Button';
 
-const { extraButtonStyle } = styles;
-
 export function LoginForm() {
   const dispatch = useDispatch();
   const errorNotification = useSelector((state) => state.authSlice.notification);

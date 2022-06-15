@@ -35,6 +35,10 @@
     text-decoration: none;
     color: #88dfdf;
 }
+button {
+    background: transparent;
+    border: none !important;
+}
 
 .nav a:hover,
 .nav a:active,
