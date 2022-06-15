@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialStateAuthSlice = {
   user: {
     email: '',
+    name: '',
     tasks: [],
     lastLogin: '',
     registerAt: '',
@@ -19,16 +20,20 @@ const authSlice = createSlice({
   reducers: {
     setUserData(state, action) {
       state.user.email = action.payload.email;
+      state.user.name = action.payload.name;
       state.user.lastLogin = action.payload.lastLogin;
       state.user.registerAt = action.payload.registerAt;
       state.user.userID = action.payload.userID;
-      state.isLogged = true;
     },
     setJwt(state, action) {
       state.jwt = action.payload;
+      action.payload ? state.isLogged = true : state.isLogged = false;
     },
     setNotification(state, action) {
       state.notification = action.payload;
+    },
+    setTasks(state, action) {
+      state.user.tasks = action.payload;
     },
   },
 });
@@ -53,7 +58,6 @@ export const sendLoginData = (data) => async (dispatch) => {
       return;
     }
     const jwt = await response.json();
-    console.log(`jwt ${jwt}`);
     dispatch(authSliceActions.setJwt(jwt));
     const userData = await fetch('http://localhost:3001/v1/api/user', {
       method: 'GET',
@@ -66,15 +70,24 @@ export const sendLoginData = (data) => async (dispatch) => {
       return;
     }
     const user = await userData.json();
-    console.log(`User data: ${user.email}`);
     dispatch(authSliceActions.setUserData({
       email: user.email,
+      name: user.name,
       userID: user.userID,
-      lastLogin: user.lastLogin,
-      registerAt: user.registerAt,
+      lastLogin: user.lastLogin.slice(0, 10),
+      registerAt: user.registerAt.slice(0, 10),
     }));
+    const tasks = await fetch('http://localhost:3001/v1/api/tasks', {
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${jwt}`,
+      },
+    });
+    const allTasks = await tasks.json();
+    dispatch(authSliceActions.setTasks(allTasks));
   } catch (err) {
     console.log(err);
   }
 };
+
 export default authSlice;

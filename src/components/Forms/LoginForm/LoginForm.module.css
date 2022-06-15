@@ -11,8 +11,9 @@
 }
 .loginForm input:focus {
     background-color: #88dfdf;
-    color:white;
+    color:#008080;
     font-weight: bold;
     font-family: Perpetua;
 
 }
+
