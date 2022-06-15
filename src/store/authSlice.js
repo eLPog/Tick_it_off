@@ -35,6 +35,9 @@ const authSlice = createSlice({
     setTasks(state, action) {
       state.user.tasks = action.payload;
     },
+    addTask(state, action) {
+      state.user.tasks.push(action.payload);
+    },
   },
 });
 export const authSliceActions = authSlice.actions;
