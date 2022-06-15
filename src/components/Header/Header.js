@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import icon1 from '../../images/icon1.png';
+import icon1 from '../../assets/icon1.png';
 import styles from './Header.module.css';
 
 export function Header() {

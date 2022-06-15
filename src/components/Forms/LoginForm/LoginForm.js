@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { sendLoginData } from '../../../store/authSlice';
-import { StartPage } from '../../StartPage/StartPage';
+import { Button } from '../../commons/Button/Button';
+
+const { extraButtonStyle } = styles;
 
 export function LoginForm() {
   const dispatch = useDispatch();
@@ -39,14 +41,14 @@ export function LoginForm() {
               Password
             </label>
             <input type="password" id="loginPassword" onChange={passwordHandler} required />
-            <button>Login</button>
+            <Button text="Login" />
           </form>
         </div>
         <div className="centered">
           <p>{errorNotification}</p>
         </div>
       </>
-    ) : <Navigate to="/" />
+    ) : <Navigate to="/user" />
 
   );
 }
