@@ -2,7 +2,7 @@ import styles from './AboutApp.module.css';
 
 export function AboutApp() {
   return (
-    <div className={`${styles.container} animate element`}>
+    <div className={`${styles.container} animateElement`}>
       <p>
         This app has been fully developed by me (frontend and backend),
         and allows you to store your own To Do List.

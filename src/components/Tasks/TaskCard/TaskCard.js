@@ -3,6 +3,8 @@ import { useState } from 'react';
 import styles from './TaskCard.module.css';
 import { authSliceActions } from '../../../store/authSlice';
 import { EditTask } from '../../Forms/EditTasks/EditTask';
+import iconDelete from '../../../assets/iconDelete.png';
+import iconEdit from '../../../assets/iconEdit.png';
 
 export function TaskCard(props) {
   const { errorNotification, jwt } = useSelector((state) => state.authSlice);
@@ -77,8 +79,8 @@ export function TaskCard(props) {
           <p>{props.content}</p>
         </div>
         <div className={styles.actions}>
-          <button onClick={deleteTask}>X X X</button>
-          <button onClick={showEditFormHandler}>E</button>
+          <button onClick={showEditFormHandler}><img src={iconEdit} alt="Edit task icon" /></button>
+          <button onClick={deleteTask}><img src={iconDelete} alt="Delete task icon" /></button>
           <p>{errorNotification}</p>
         </div>
       </li>
