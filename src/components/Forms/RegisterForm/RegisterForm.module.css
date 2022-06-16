@@ -1,0 +1,19 @@
+.registerForm {
+    display: flex;
+    flex-direction: column;
+}
+.registerForm label {
+    margin-bottom: 2px;
+}
+.registerForm input {
+    margin: 2px;
+    border-radius: 10px;
+    height: 2rem;
+    font-size: 1.4rem;
+}
+.registerForm input:focus {
+    background-color: #88dfdf;
+    color:#008080;
+    height: 2rem;
+    font-size: 1.4rem;
+}

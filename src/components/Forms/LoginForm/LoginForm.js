@@ -28,7 +28,6 @@ export function LoginForm() {
 
     !isLogged ? (
       <>
-        {' '}
         <div className="centered">
           <form className={styles.loginForm} onSubmit={formSend}>
             <label htmlFor="loginEmail">
