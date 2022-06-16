@@ -25,6 +25,7 @@ export function TasksList() {
       setTasks(res);
     };
     fetchData().catch(console.error);
+    setTaskChanged(false);
   }, [taskChanged]);
 
   const tasksList = tasks.map((el) => (
