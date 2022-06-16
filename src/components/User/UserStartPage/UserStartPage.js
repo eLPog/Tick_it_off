@@ -6,7 +6,7 @@ export function UserStartPage() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
   return (
     isLogged ? (
-      <div className={styles.userCard}>
+      <div className={`${styles.userCard} animateElement`}>
         Welcome
         <span className={styles.userEmail}>
           {' '}

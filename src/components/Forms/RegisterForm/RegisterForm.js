@@ -87,7 +87,7 @@ export function RegisterForm() {
     !isLogged ? (
       <>
         <div className="centered">
-          <form className={styles.registerForm} onSubmit={submitForm}>
+          <form className={`${styles.registerForm} animateElement`} onSubmit={submitForm}>
             <label htmlFor="registerEmail">
               Email
             </label>

@@ -19,7 +19,7 @@ export function EditTask(props) {
 
   return (
     <div className="centered">
-      <form className={styles.addTaskForm} onSubmit={editTaskHandler}>
+      <form className={`${styles.addTaskForm} animateElement`} onSubmit={editTaskHandler}>
         <label htmlFor="taskTitleEdit">
           Title
         </label>

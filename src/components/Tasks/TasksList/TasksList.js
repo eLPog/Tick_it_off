@@ -42,7 +42,7 @@ export function TasksList() {
   return (
     <>
       {notification && <p>{notification}</p>}
-      <ul className={styles.list}>
+      <ul className={`${styles.list} animateElement`}>
         {tasksList}
 
       </ul>

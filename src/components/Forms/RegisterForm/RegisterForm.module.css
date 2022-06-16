@@ -1,6 +1,7 @@
 .registerForm {
     display: flex;
     flex-direction: column;
+
 }
 .registerForm label {
     margin-bottom: 2px;
@@ -20,10 +21,24 @@
 .errorInfo {
     background-color: rgba(255,137,147,0.82);
     width: 70vh;
+
 }
 .info {
     background-color: #11acac;
     width: 70vh;
     font-size: 1.1rem;
     font-family: "Calisto MT";
+    animation: info-appear 2.5s ease-in forwards;
+}
+
+@keyframes info-appear {
+    from {
+        opacity: 0;
+        transform: translateY(10vh);
+    }
+    to {
+        opacity:100;
+        transform: translateY(0);
+
+    }
 }

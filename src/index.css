@@ -2,10 +2,18 @@
   box-sizing: border-box;
 }
 
+.animateElement {
+  animation: animate-element 0.5s ease-in forwards;
+
+}
+
+
 body {
   font-family: sans-serif;
   margin: 0;
   background-color: #e7f8f8;
+  animation: body-appear 1.5s ease-out forwards;
+
 }
 
 .centered {
@@ -39,4 +47,20 @@ body {
 .btn--flat:active {
   background-color: teal;
   color: white;
+}
+@keyframes body-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity:100
+  }
+}
+@keyframes animate-element {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity:100
+  }
 }

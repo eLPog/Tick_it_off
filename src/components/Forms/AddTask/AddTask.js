@@ -47,7 +47,7 @@ export function AddTask() {
 
   return (
     <div className="centered">
-      <form className={styles.addTaskForm} onSubmit={fetchNewTask}>
+      <form className={`${styles.addTaskForm} animateElement`} onSubmit={fetchNewTask}>
         <label htmlFor="taskTitle">
           Title
         </label>
