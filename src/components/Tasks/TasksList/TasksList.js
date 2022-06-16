@@ -1,16 +1,31 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import styles from './TasksList.module.css';
 import { TaskCard } from '../TaskCard/TaskCard';
-import { getTasks } from '../../../store/getTasks';
 
 export function TasksList() {
-  const tasks = useSelector((state) => state.authSlice.user.tasks);
   const { jwt, notification } = useSelector((state) => state.authSlice);
-  const dispatch = useDispatch();
+  const [tasks, setTasks] = useState([]);
+  const [taskChanged, setTaskChanged] = useState(false);
+
+  const taskChangedHandler = () => {
+    setTaskChanged(true);
+  };
+
   useEffect(() => {
-    dispatch(getTasks(jwt));
-  }, [tasks]);
+    console.log('tasks list rendered');
+    const fetchData = async () => {
+      const data = await fetch('http://localhost:3001/v1/api/tasks', {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+        },
+      });
+      const res = await data.json();
+      setTasks(res);
+    };
+    fetchData().catch(console.error);
+  }, [taskChanged]);
 
   const tasksList = tasks.map((el) => (
     <TaskCard
@@ -18,6 +33,8 @@ export function TasksList() {
       title={el.title}
       content={el.content}
       createdAt={el.createdAt}
+      taskID={el.taskID}
+      taskChanged={taskChangedHandler}
     />
   ));
 

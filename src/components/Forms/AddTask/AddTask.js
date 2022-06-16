@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import styles from './AddTask.module.css';
 import { Button } from '../../commons/Button/Button';
-import { getTasks } from '../../../store/getTasks';
 import { authSliceActions } from '../../../store/authSlice';
 
 export function AddTask() {
@@ -39,7 +38,6 @@ export function AddTask() {
         dispatch(authSliceActions.setNotification('Error adding task'));
         return;
       }
-      dispatch(getTasks(jwt));
       dispatch(authSliceActions.setNotification(''));
       setTaskAdded(true);
     } catch (err) {
@@ -61,7 +59,7 @@ export function AddTask() {
         <Button text="Add" />
       </form>
       <p>{errorNotification}</p>
-      {taskAdded && <Navigate to="/tasks" />}
+      {taskAdded && <Navigate to="/tasks" replace />}
     </div>
   );
 }

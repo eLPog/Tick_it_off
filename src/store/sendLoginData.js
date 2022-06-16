@@ -1,6 +1,5 @@
 // thunk function to use async fetch
 import { authSliceActions } from './authSlice';
-import { getTasks } from './getTasks';
 
 export const sendLoginData = (data) => async (dispatch) => {
   dispatch(authSliceActions.setNotification(''));
@@ -39,15 +38,6 @@ export const sendLoginData = (data) => async (dispatch) => {
       lastLogin: user.lastLogin.slice(0, 10),
       registerAt: user.registerAt.slice(0, 10),
     }));
-    // const tasks = await fetch('http://localhost:3001/v1/api/tasks', {
-    //   method: 'GET',
-    //   headers: {
-    //     authorization: `Bearer ${jwt}`,
-    //   },
-    // });
-    // const allTasks = await tasks.json();
-    // dispatch(authSliceActions.setTasks(allTasks));
-    dispatch(getTasks(jwt));
   } catch (err) {
     console.log(err);
   }

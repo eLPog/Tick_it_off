@@ -4,7 +4,6 @@ const initialStateAuthSlice = {
   user: {
     email: '',
     name: '',
-    tasks: [],
     lastLogin: '',
     registerAt: '',
     userID: '',
@@ -31,12 +30,6 @@ const authSlice = createSlice({
     },
     setNotification(state, action) {
       state.notification = action.payload;
-    },
-    setTasks(state, action) {
-      state.user.tasks = action.payload;
-    },
-    addTask(state, action) {
-      state.user.tasks.push(action.payload);
     },
   },
 });
