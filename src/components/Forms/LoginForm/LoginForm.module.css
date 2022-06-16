@@ -16,3 +16,7 @@
     font-size: 1.4rem;
 }
 
+.errorInfo {
+    background-color: rgba(255,137,147,0.82);
+    width: 50vh;
+}

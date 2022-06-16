@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { sendLoginData } from '../../../store/sendLoginData';
@@ -12,6 +12,16 @@ export function LoginForm() {
   // I use local state for storing variables with email and password.
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isButtonActive, setIsButtonActive] = useState(false);
+
+  useEffect(() => {
+    if (email.length > 1 && email.includes('@') && password.length > 4) {
+      setIsButtonActive(true);
+    } else {
+      setIsButtonActive(false);
+    }
+  }, [email, password]);
+
   const emailHandler = (e) => {
     setEmail(e.target.value);
   };
@@ -38,12 +48,16 @@ export function LoginForm() {
               Password
             </label>
             <input type="password" id="loginPassword" onChange={passwordHandler} required />
-            <Button text="Login" />
+            <Button text="Login" disabled={isButtonActive ? '' : 'disabled'} />
           </form>
         </div>
-        <div className="centered">
+        {errorNotification && (
+        <div className={`centered ${styles.errorInfo}`}>
           <p>{errorNotification}</p>
+
         </div>
+        )}
+
       </>
     ) : <Navigate to="/user" />
 
