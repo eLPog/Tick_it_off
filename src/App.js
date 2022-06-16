@@ -9,6 +9,7 @@ import { TasksList } from './components/Tasks/TasksList/TasksList';
 import { Logout } from './components/Logout/Logout';
 import { AddTask } from './components/Forms/AddTask/AddTask';
 import { RegisterForm } from './components/Forms/RegisterForm/RegisterForm';
+import { AboutApp } from './components/AboutApp/AboutApp';
 
 function App() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/*" element={<StartPage />} />
+        <Route path="/aboutApp" element={<AboutApp />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/user" element={isLogged ? <UserStartPage /> : <Navigate to="/" />} />
