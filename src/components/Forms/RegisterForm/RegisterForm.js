@@ -1,19 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import styles from './RegisterForm.module.css';
 import { Button } from '../../commons/Button/Button';
 import { sendLoginData } from '../../../store/sendLoginData';
-import { authSliceActions } from '../../../store/authSlice';
 
 export function RegisterForm() {
   const dispatch = useDispatch();
-  const errorNotification = useSelector((state) => state.authSlice.notification);
   const isLogged = useSelector((state) => state.authSlice.isLogged);
-  const [email, setEmail] = useState();
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
-  const [password2, setPassword2] = useState();
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [info, setInfo] = useState('');
+  const [isButtonActive, setIsButtonActive] = useState(false);
+
+  /*
+  I compare if the passwords match,
+  I provide the information with a delay to give the user time to enter the data
+   */
+  useEffect(() => {
+    if (email.includes('@') && name && password
+        && password2 && password.length > 4
+        && password2.length > 4 && password === password2) {
+      setIsButtonActive(true);
+    } else {
+      setIsButtonActive(false);
+    }
+  }, [email, name, password, password2]);
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      password !== password2
+        ? setInfo('Passwords are not the same') : setInfo('');
+    }, 1200);
+    return () => { clearTimeout(identifier); };
+  }, [password, password2]);
 
   const fetchData = async () => {
     try {
@@ -29,12 +50,17 @@ export function RegisterForm() {
           password2,
         }),
       });
-      if (!res.ok) {
-        dispatch(authSliceActions.setNotification('We have some error. Please try again'));
+      if (res.status === 404) {
+        setInfo('We have some error. Please try again');
+        return;
       }
-      dispatch(authSliceActions.setNotification(''));
+      if (res.status === 409) {
+        setInfo('Email already exist');
+        return;
+      }
       dispatch(sendLoginData({ email, password }));
     } catch (err) {
+      setInfo('Unexpected Error');
       console.log(err);
     }
   };
@@ -78,12 +104,18 @@ export function RegisterForm() {
               Repeat password
             </label>
             <input type="password" id="registerPassword2" required onChange={password2Handler} />
-            <Button text="Register" />
+            <Button text="Register" disabled={isButtonActive ? '' : 'disabled'} />
           </form>
         </div>
-        <div className="centered">
-          <p>{errorNotification}</p>
+        {info && (
+        <div className={`centered ${styles.errorInfo}`}>
+          <p>{info}</p>
         </div>
+        )}
+        <div className={`centered ${styles.info}`}>
+          <p>All fields are required and the password must be min. 5 characters long</p>
+        </div>
+
       </>
     ) : <Navigate to="/user" />
   );

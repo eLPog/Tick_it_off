@@ -17,3 +17,13 @@
     height: 2rem;
     font-size: 1.4rem;
 }
+.errorInfo {
+    background-color: rgba(255,137,147,0.82);
+    width: 70vh;
+}
+.info {
+    background-color: #11acac;
+    width: 70vh;
+    font-size: 1.1rem;
+    font-family: "Calisto MT";
+}
