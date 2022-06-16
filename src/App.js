@@ -8,6 +8,7 @@ import { UserStartPage } from './components/User/UserStartPage/UserStartPage';
 import { TasksList } from './components/Tasks/TasksList/TasksList';
 import { Logout } from './components/Logout/Logout';
 import { AddTask } from './components/Forms/AddTask/AddTask';
+import { EditTask } from './components/Forms/EditTasks/EditTask';
 
 function App() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
@@ -20,7 +21,7 @@ function App() {
         <Route path="/*" element={<StartPage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/user" element={isLogged ? <UserStartPage /> : <Navigate to="/" />} />
-        <Route path="/tasks" element={isLogged ? <TasksList /> : <Navigate to="/" />} />
+        <Route path="/tasks/*" element={isLogged ? <TasksList /> : <Navigate to="/" />} />
         <Route path="/add" element={isLogged ? <AddTask /> : <Navigate to="/" />} />
         <Route path="/logout" element={isLogged ? <Logout /> : <Navigate to="/" />} />
 
