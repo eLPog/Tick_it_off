@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import styles from './LoginForm.module.css';
-import { sendLoginData } from '../../../store/authSlice';
+import { sendLoginData } from '../../../store/sendLoginData';
 import { Button } from '../../commons/Button/Button';
 
 export function LoginForm() {

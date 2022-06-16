@@ -12,8 +12,7 @@
 .loginForm input:focus {
     background-color: #88dfdf;
     color:#008080;
-    font-weight: bold;
-    font-family: Perpetua;
-
+    height: 2rem;
+    font-size: 1.4rem;
 }
 

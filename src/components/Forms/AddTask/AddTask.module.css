@@ -1,0 +1,36 @@
+.addTaskForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+label {
+    font-size: 1.25rem;
+    margin:2rem 0 1rem;
+}
+.addTaskForm input {
+    margin: 5px;
+    border-radius: 7px;
+    height: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+.addTaskForm textarea {
+    width: 50vh;
+    height: 10vh;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.addTaskForm textarea:focus {
+    background-color: #88dfdf;
+    color:#162b2b;
+
+}
+.addTaskForm input:focus {
+    background-color: #88dfdf;
+    color:#162b2b;
+    height: 2rem;
+    font-size: 1.4rem;
+}

@@ -1,7 +1,31 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './TaskCard.module.css';
+import { authSliceActions } from '../../../store/authSlice';
 
 export function TaskCard(props) {
-  console.log(props.title);
+  const { errorNotification, jwt } = useSelector((state) => state.authSlice);
+  const dispatch = useDispatch();
+
+  const deleteTask = async () => {
+    try {
+      const data = await fetch(`http://localhost:3001/v1/api/tasks/${props.taskID}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+        },
+      });
+      if (!data.ok) {
+        dispatch(authSliceActions.setNotification('Error by deleting. Please try again'));
+        return;
+      }
+      dispatch(authSliceActions.setNotification(''));
+      props.taskChanged();
+    } catch (err) {
+      dispatch(authSliceActions.setNotification('Error by deleting. Please try again'));
+      console.log(err);
+    }
+  };
+
   return (
     <li className={styles.item}>
       <div className={styles.title}>
@@ -19,7 +43,11 @@ export function TaskCard(props) {
       <div className={styles.content}>
         <p>{props.content}</p>
       </div>
-
+      <div className={styles.actions}>
+        <button onClick={deleteTask}>X X X</button>
+        <button>E</button>
+        <p>{errorNotification}</p>
+      </div>
     </li>
   );
 }
