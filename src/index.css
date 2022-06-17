@@ -2,10 +2,7 @@
   box-sizing: border-box;
 }
 
-.animateElement {
-  animation: animate-element 0.5s ease-in forwards;
 
-}
 
 
 body {
@@ -47,6 +44,22 @@ body {
 .btn--flat:active {
   background-color: teal;
   color: white;
+}
+.modal {
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background-color: #c2e7f0;
+  top:30vh;
+  left:50vh;
+  width: 50%;
+  height: 35%;
+}
+
+
+.animateElement {
+  animation: animate-element 0.5s ease-in forwards;
+
 }
 @keyframes body-appear {
   from {

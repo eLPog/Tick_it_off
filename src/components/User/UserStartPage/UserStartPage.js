@@ -1,11 +1,18 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { Button } from '../../commons/Button/Button';
 import styles from './UserStartPage.module.css';
+import { Backdrop } from '../../Modals/Backdrop/Backdrop';
+import { DeleteUserAccount } from '../../Modals/DeleteUserAccount/DeleteUserAccount';
 
 export function UserStartPage() {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const userData = useSelector((state) => state.authSlice.user);
-  const isLogged = useSelector((state) => state.authSlice.isLogged);
+  const showModalHandler = () => {
+    showDeleteModal ? setShowDeleteModal(false) : setShowDeleteModal(true);
+  };
   return (
-    isLogged ? (
+    <>
       <div className={`${styles.userCard} animateElement`}>
         Welcome
         <span className={styles.userEmail}>
@@ -26,14 +33,17 @@ export function UserStartPage() {
             {userData.registerAt}
           </p>
         </div>
-      </div>
-    )
-      : (
-        <div>
-          <p>
-            Please log in.
-          </p>
+        <div className={styles.actions}>
+          <Button text="Edit" />
+          <Button text="Delete" onClick={showModalHandler} />
         </div>
-      )
+      </div>
+      {showDeleteModal && (
+      <>
+        <Backdrop />
+        <DeleteUserAccount modalHandler={showModalHandler} />
+      </>
+      )}
+    </>
   );
 }

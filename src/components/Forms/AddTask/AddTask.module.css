@@ -34,3 +34,25 @@ label {
     height: 2rem;
     font-size: 1.4rem;
 }
+.errorInfo {
+    background-color: rgba(255,137,147,0.82);
+    width: 50vh;
+    animation: errorInfo-appear 0.3s ease-in forwards;
+
+}
+.info {
+    background-color: #88dfdf;
+    width: 50vh;
+    animation: errorInfo-appear 0.3s ease-in forwards;
+}
+@keyframes errorInfo-appear {
+    from {
+        opacity: 0;
+        transform: translateY(10vh);
+    }
+    to {
+        opacity:100;
+        transform: translateY(0);
+
+    }
+}
