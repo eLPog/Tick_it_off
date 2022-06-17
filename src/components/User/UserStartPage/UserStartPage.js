@@ -4,12 +4,17 @@ import { Button } from '../../commons/Button/Button';
 import styles from './UserStartPage.module.css';
 import { Backdrop } from '../../Modals/Backdrop/Backdrop';
 import { DeleteUserAccount } from '../../Modals/DeleteUserAccount/DeleteUserAccount';
+import { EditUserDataModal } from '../../Modals/EditUserDataModal/EditUserDataModal';
 
 export function UserStartPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const userData = useSelector((state) => state.authSlice.user);
-  const showModalHandler = () => {
+  const showDeleteConfirmModalHandler = () => {
     showDeleteModal ? setShowDeleteModal(false) : setShowDeleteModal(true);
+  };
+  const showEditModalHandler = () => {
+    showEditModal ? setShowEditModal(false) : setShowEditModal(true);
   };
   return (
     <>
@@ -34,14 +39,21 @@ export function UserStartPage() {
           </p>
         </div>
         <div className={styles.actions}>
-          <Button text="Edit" />
-          <Button text="Delete" onClick={showModalHandler} />
+          <Button text="Edit" onClick={showEditModalHandler} />
+          <Button text="Delete" onClick={showDeleteConfirmModalHandler} />
         </div>
       </div>
       {showDeleteModal && (
       <>
         <Backdrop />
-        <DeleteUserAccount modalHandler={showModalHandler} />
+        <DeleteUserAccount modalHandler={showDeleteConfirmModalHandler} />
+      </>
+
+      )}
+      {showEditModal && (
+      <>
+        <Backdrop />
+        <EditUserDataModal showModalHandler={showEditModalHandler} userData={userData} />
       </>
       )}
     </>
