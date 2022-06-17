@@ -26,6 +26,14 @@ export function EditUserDataModal(props) {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    if (!email.includes('@')) {
+      setInfo('Invalid email format');
+      return;
+    }
+    if (userData.email === 'test@test.com') {
+      setInfo('You cant edit a Test Account.');
+      return;
+    }
     const res = await fetch(`${apiData}/user`, {
       method: 'PATCH',
       headers: {
@@ -69,11 +77,11 @@ export function EditUserDataModal(props) {
         <label htmlFor="editEmail">
           Email
         </label>
-        <input type="email" id="editEmail" value={email} onChange={emailHandler} />
+        <input type="email" id="editEmail" required value={email} onChange={emailHandler} />
         <label htmlFor="editName">
           Name
         </label>
-        <input type="text" id="editName" value={name} onChange={nameHandler} />
+        <input type="text" id="editName" required value={name} onChange={nameHandler} />
         <label htmlFor="editPassword">
           Set new password
         </label>
