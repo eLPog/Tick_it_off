@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Header } from './components/Header/Header';
+import { LoginForm } from './components/Forms/LoginForm/LoginForm';
+import { StartPage } from './components/StartPage/StartPage';
+import { UserStartPage } from './components/User/UserStartPage/UserStartPage';
+import { TasksList } from './components/Tasks/TasksList/TasksList';
+import { Logout } from './components/Logout/Logout';
+import { AddTask } from './components/Forms/AddTask/AddTask';
+import { RegisterForm } from './components/Forms/RegisterForm/RegisterForm';
+import { AboutApp } from './components/AboutApp/AboutApp';
 
 function App() {
+  const isLogged = useSelector((state) => state.authSlice.isLogged);
+  console.log(`Zalogowany? ${isLogged}`);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/*" element={<StartPage />} />
+        <Route path="/aboutApp" element={<AboutApp />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/user" element={isLogged ? <UserStartPage /> : <Navigate to="/" />} />
+        <Route path="/tasks/*" element={isLogged ? <TasksList /> : <Navigate to="/" />} />
+        <Route path="/add" element={isLogged ? <AddTask /> : <Navigate to="/" />} />
+        <Route path="/logout" element={isLogged ? <Logout /> : <Navigate to="/" />} />
+
+      </Routes>
+    </>
   );
 }
 

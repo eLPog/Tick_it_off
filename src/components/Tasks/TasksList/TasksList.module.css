@@ -1,0 +1,28 @@
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info {
+    font-family: Roboto;
+    font-size: 1.4rem;
+
+
+}
+.noTasksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add {
+    font-family: Roboto;
+    font-size: 1.4rem;
+    color: #162b2b;
+    text-decoration: underline rgba(99,105,220,0.82);
+}
+.add:hover{
+    text-decoration: underline rgba(0,48,220,0.82);
+}

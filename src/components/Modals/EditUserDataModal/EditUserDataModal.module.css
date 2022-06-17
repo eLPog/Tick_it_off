@@ -1,0 +1,30 @@
+.local {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60%;
+}
+.editForm {
+    display: flex;
+    flex-direction: column;
+
+}
+label, input {
+    padding:5px 0;
+    margin:10px;
+}
+
+.editForm input:focus {
+    background-color: #88dfdf;
+    color:#008080;
+    height: 2rem;
+    font-size: 1.4rem;
+}
+.actions button {
+    margin:1rem;
+}
+.info {
+    font-family: Roboto;
+    font-size: 1.4rem;
+
+}
