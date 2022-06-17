@@ -17,6 +17,10 @@ export function DeleteUserAccount(props) {
     setPassword(e.target.value);
   };
   const deleteAccount = async () => {
+    if (email === 'test@test.com' && password === 'password') {
+      setInfo('Sorry, you cant delete a Test Account');
+      return;
+    }
     const res = await fetch(`${apiData}/user`, {
       method: 'DELETE',
       headers: {
@@ -34,10 +38,6 @@ export function DeleteUserAccount(props) {
     }
     if (res.status !== 200) {
       setInfo('Something went wrong. Please try again.');
-      return;
-    }
-    if (email === 'test@test.com' && password === 'password') {
-      setInfo('Sorry, you cant delete a Test Account');
       return;
     }
     setShowInput(false);
