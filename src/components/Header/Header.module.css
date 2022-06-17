@@ -34,14 +34,16 @@
 .nav a {
     text-decoration: none;
     color: #88dfdf;
+    font-family: Algerian;
 }
 button {
     background: transparent;
     border: none !important;
 }
 
-.nav a:hover,
-.nav a:active,
-.nav a.active {
-    color: #e6fcfc;
+.nav a:hover {
+    color: black;
+}
+.activated a {
+    color:blue;
 }

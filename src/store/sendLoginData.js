@@ -14,8 +14,16 @@ export const sendLoginData = (data) => async (dispatch) => {
         password: data.password,
       }),
     });
-    if (!response.ok) {
+    if (response.status === 400) {
       dispatch(authSliceActions.setNotification('Email or password incorrect'));
+      return;
+    }
+    if (response.status === 404) {
+      dispatch(authSliceActions.setNotification('Problem on server side. Please try again.'));
+      return;
+    }
+    if (response.status < 200 || response.status > 299) {
+      dispatch(authSliceActions.setNotification('Unexpected error. Please try again.'));
       return;
     }
     const jwt = await response.json();
@@ -27,7 +35,7 @@ export const sendLoginData = (data) => async (dispatch) => {
       },
     });
     if (!userData.ok) {
-      dispatch(authSliceActions.setNotification('Ups...we have some error.'));
+      dispatch(authSliceActions.setNotification('Ups...we have some error. Please try again.'));
       return;
     }
     const user = await userData.json();

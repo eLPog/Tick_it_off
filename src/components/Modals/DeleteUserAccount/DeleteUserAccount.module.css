@@ -1,0 +1,21 @@
+.local {
+    text-align: center;
+}
+.local p {
+    padding:1rem 0 1rem;
+}
+.actions button {
+    margin:0 5px;
+}
+input {
+    margin: 5px;
+    border-radius: 7px;
+    height: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+.info {
+    font-family: Roboto;
+    font-size: 1.4rem;
+
+}

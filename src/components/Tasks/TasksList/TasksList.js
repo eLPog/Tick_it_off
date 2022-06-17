@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './TasksList.module.css';
 import { TaskCard } from '../TaskCard/TaskCard';
 
@@ -13,7 +14,6 @@ export function TasksList() {
   };
 
   useEffect(() => {
-    console.log('tasks list rendered');
     const fetchData = async () => {
       const data = await fetch('http://localhost:3001/v1/api/tasks', {
         method: 'GET',
@@ -25,6 +25,7 @@ export function TasksList() {
       setTasks(res);
     };
     fetchData().catch(console.error);
+    setTaskChanged(false);
   }, [taskChanged]);
 
   const tasksList = tasks.map((el) => (
@@ -37,11 +38,17 @@ export function TasksList() {
       taskChanged={taskChangedHandler}
     />
   ));
+  const noTasks = (
+    <div className={styles.noTasksContainer}>
+      <p className={styles.info}>You dont have any tasks yet. </p>
+      <NavLink to="/add" className={styles.add}> Add your first Task</NavLink>
+    </div>
+  );
 
   return (
     <>
-      {notification && <p>{notification}</p>}
-      <ul className={styles.list}>
+      {tasks.length < 1 && noTasks}
+      <ul className={`${styles.list} animateElement`}>
         {tasksList}
 
       </ul>

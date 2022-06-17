@@ -7,7 +7,12 @@ const menuForLogged = (
   <nav className={styles.nav}>
     <ul>
       <li>
-        <NavLink to="/aboutApp">About App</NavLink>
+        <NavLink
+          to="/aboutApp"
+          className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+        >
+          About App
+        </NavLink>
       </li>
       <li>
         <NavLink to="/logout">
@@ -31,10 +36,18 @@ const menuForNotLogged = (
   <nav className={styles.nav}>
     <ul>
       <li>
-        <NavLink to="/aboutApp">About App</NavLink>
+        <NavLink
+          to="/aboutApp"
+          className={(isActive) => `${isActive ? styles.activated : ''}`}
+        >
+          About App
+        </NavLink>
       </li>
       <li>
         <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Register</NavLink>
       </li>
       <li>
         <NavLink to="/">Main Page</NavLink>
@@ -49,7 +62,7 @@ export function Header() {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.title}>
-        Tick it off
+        <NavLink to="/">Tick it off</NavLink>
       </div>
       {isLogged ? menuForLogged : menuForNotLogged}
       <div className={styles.icon}>

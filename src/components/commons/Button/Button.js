@@ -3,8 +3,9 @@ import styles from './Button.module.css';
 export function Button(props) {
   return (
     <button
-      className={styles.normalButton}
+      className={props.type ? styles[props.type] : styles.normalButton}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.text}
     </button>

@@ -1,12 +1,24 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { Button } from '../../commons/Button/Button';
 import styles from './UserStartPage.module.css';
+import { Backdrop } from '../../Modals/Backdrop/Backdrop';
+import { DeleteUserAccount } from '../../Modals/DeleteUserAccount/DeleteUserAccount';
+import { EditUserDataModal } from '../../Modals/EditUserDataModal/EditUserDataModal';
 
 export function UserStartPage() {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const userData = useSelector((state) => state.authSlice.user);
-  const isLogged = useSelector((state) => state.authSlice.isLogged);
+  const showDeleteConfirmModalHandler = () => {
+    showDeleteModal ? setShowDeleteModal(false) : setShowDeleteModal(true);
+  };
+  const showEditModalHandler = () => {
+    showEditModal ? setShowEditModal(false) : setShowEditModal(true);
+  };
   return (
-    isLogged ? (
-      <div className={styles.userCard}>
+    <>
+      <div className={`${styles.userCard} animateElement`}>
         Welcome
         <span className={styles.userEmail}>
           {' '}
@@ -26,14 +38,24 @@ export function UserStartPage() {
             {userData.registerAt}
           </p>
         </div>
-      </div>
-    )
-      : (
-        <div>
-          <p>
-            Please log in.
-          </p>
+        <div className={styles.actions}>
+          <Button text="Edit" onClick={showEditModalHandler} />
+          <Button text="Delete" onClick={showDeleteConfirmModalHandler} />
         </div>
-      )
+      </div>
+      {showDeleteModal && (
+      <>
+        <Backdrop />
+        <DeleteUserAccount modalHandler={showDeleteConfirmModalHandler} />
+      </>
+
+      )}
+      {showEditModal && (
+      <>
+        <Backdrop />
+        <EditUserDataModal showModalHandler={showEditModalHandler} userData={userData} />
+      </>
+      )}
+    </>
   );
 }
