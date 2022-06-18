@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import styles from './AddTask.module.css';
 import { Button } from '../../commons/Button/Button';
 import { authSliceActions } from '../../../store/authSlice';
+import { apiData } from '../../../utils/apiData';
 
 export function AddTask() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export function AddTask() {
   const fetchNewTask = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3001/v1/api/tasks', {
+      const res = await fetch(`${apiData}/tasks`, {
         method: 'POST',
         headers: {
           authorization: `Bearer ${jwt}`,

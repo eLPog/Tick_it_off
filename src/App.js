@@ -13,7 +13,6 @@ import { AboutApp } from './components/AboutApp/AboutApp';
 
 function App() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
-  console.log(`Zalogowany? ${isLogged}`);
 
   return (
     <>
