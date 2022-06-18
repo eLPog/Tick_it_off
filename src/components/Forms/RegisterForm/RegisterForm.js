@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import styles from './RegisterForm.module.css';
 import { Button } from '../../commons/Button/Button';
 import { sendLoginData } from '../../../store/sendLoginData';
+import { apiData } from '../../../utils/apiData';
 
 export function RegisterForm() {
   const dispatch = useDispatch();
@@ -21,8 +22,8 @@ export function RegisterForm() {
    */
   useEffect(() => {
     if (email.includes('@') && name && password
-        && password2 && password.length > 4
-        && password2.length > 4 && password === password2) {
+        && password2 && password.trim().length > 4
+        && password2.trim().length > 4 && password === password2) {
       setIsButtonActive(true);
     } else {
       setIsButtonActive(false);
@@ -38,7 +39,7 @@ export function RegisterForm() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('http://localhost:3001/v1/api/auth/register', {
+      const res = await fetch(`${apiData}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

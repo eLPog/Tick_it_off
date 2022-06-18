@@ -5,6 +5,7 @@ import { authSliceActions } from '../../../store/authSlice';
 import { EditTask } from '../../Forms/EditTasks/EditTask';
 import iconDelete from '../../../assets/iconDelete.png';
 import iconEdit from '../../../assets/iconEdit.png';
+import { apiData } from '../../../utils/apiData';
 
 export function TaskCard(props) {
   const { errorNotification, jwt } = useSelector((state) => state.authSlice);
@@ -16,7 +17,7 @@ export function TaskCard(props) {
   };
 
   const editTask = async (title, content) => {
-    await fetch(`http://localhost:3001/v1/api/tasks/${props.taskID}`, {
+    await fetch(`${apiData}/tasks/${props.taskID}`, {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${jwt}`,
@@ -33,7 +34,7 @@ export function TaskCard(props) {
 
   const deleteTask = async () => {
     try {
-      const data = await fetch(`http://localhost:3001/v1/api/tasks/${props.taskID}`, {
+      const data = await fetch(`${apiData}/tasks/${props.taskID}`, {
         method: 'DELETE',
         headers: {
           authorization: `Bearer ${jwt}`,

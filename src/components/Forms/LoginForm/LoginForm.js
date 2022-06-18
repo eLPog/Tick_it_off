@@ -15,7 +15,7 @@ export function LoginForm() {
   const [isButtonActive, setIsButtonActive] = useState(false);
 
   useEffect(() => {
-    if (email.length > 1 && email.includes('@') && password.length > 4) {
+    if (email.trim().length > 1 && email.includes('@') && password.trim().length > 4) {
       setIsButtonActive(true);
     } else {
       setIsButtonActive(false);
