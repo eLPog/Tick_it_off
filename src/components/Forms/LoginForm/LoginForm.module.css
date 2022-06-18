@@ -1,3 +1,10 @@
+.container {
+    margin: 3rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .loginForm {
     display: flex;
     flex-direction: column;
@@ -30,6 +37,41 @@
     to {
         opacity:100;
         transform: translateY(0);
+
+    }
+}
+
+@media (max-width: 580px){
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100vh;
+    }
+    .loginForm {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .loginForm input {
+        margin: 5px;
+        border-radius: 10px;
+        height: 2rem;
+        font-size: 1.4rem;
+    }
+    .loginForm input:focus {
+        background-color: #88dfdf;
+        color:#008080;
+        height: 2rem;
+        font-size: 1.4rem;
+    }
+
+    .errorInfo {
+        background-color: rgba(255,137,147,0.82);
+        width: 50vh;
+        animation: errorInfo-appear 0.3s ease-in forwards;
 
     }
 }
