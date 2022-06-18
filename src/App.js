@@ -1,4 +1,3 @@
-import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Header } from './components/Header/Header';
