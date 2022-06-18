@@ -38,7 +38,7 @@ export function LoginForm() {
 
     !isLogged ? (
       <>
-        <div className="centered">
+        <div className={styles.container}>
           <form className={`${styles.loginForm} animateElement`} onSubmit={formSend}>
             <label htmlFor="loginEmail">
               Email
