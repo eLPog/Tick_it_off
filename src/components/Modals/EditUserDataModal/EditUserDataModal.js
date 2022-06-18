@@ -34,6 +34,10 @@ export function EditUserDataModal(props) {
       setInfo('You cant edit a Test Account.');
       return;
     }
+    if (name.trim().length < 1 || email.trim().length > 1) {
+      setInfo('Provide new values');
+      return;
+    }
     const res = await fetch(`${apiData}/user`, {
       method: 'PATCH',
       headers: {

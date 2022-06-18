@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './TasksList.module.css';
 import { TaskCard } from '../TaskCard/TaskCard';
+import { apiData } from '../../../utils/apiData';
 
 export function TasksList() {
   const { jwt, notification } = useSelector((state) => state.authSlice);
@@ -15,7 +16,7 @@ export function TasksList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:3001/v1/api/tasks', {
+      const data = await fetch(`${apiData}/tasks`, {
         method: 'GET',
         headers: {
           authorization: `Bearer ${jwt}`,
