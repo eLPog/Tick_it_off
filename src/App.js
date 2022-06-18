@@ -1,4 +1,3 @@
-import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Header } from './components/Header/Header';
@@ -17,17 +16,18 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/*" element={<StartPage />} />
-        <Route path="/aboutApp" element={<AboutApp />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/user" element={isLogged ? <UserStartPage /> : <Navigate to="/" />} />
-        <Route path="/tasks/*" element={isLogged ? <TasksList /> : <Navigate to="/" />} />
-        <Route path="/add" element={isLogged ? <AddTask /> : <Navigate to="/" />} />
-        <Route path="/logout" element={isLogged ? <Logout /> : <Navigate to="/" />} />
-
-      </Routes>
+      <div className="mainContainer">
+        <Routes>
+          <Route path="/*" element={<StartPage />} />
+          <Route path="/aboutApp" element={<AboutApp />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/user" element={isLogged ? <UserStartPage /> : <Navigate to="/" />} />
+          <Route path="/tasks/*" element={isLogged ? <TasksList /> : <Navigate to="/" />} />
+          <Route path="/add" element={isLogged ? <AddTask /> : <Navigate to="/" />} />
+          <Route path="/logout" element={isLogged ? <Logout /> : <Navigate to="/" />} />
+        </Routes>
+      </div>
     </>
   );
 }
