@@ -39,7 +39,7 @@ export function RegisterForm() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${apiData}/register`, {
+      const res = await fetch(`${apiData}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
