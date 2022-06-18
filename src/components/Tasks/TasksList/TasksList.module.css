@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 .info {
     font-family: Roboto;
@@ -25,4 +26,29 @@
 }
 .add:hover{
     text-decoration: underline rgba(0,48,220,0.82);
+}
+@media only screen and (min-width: 360px){
+    .list {
+
+    }
+    .info {
+        font-family: Roboto;
+        font-size: 1.4rem;
+
+
+    }
+    .noTasksContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .add {
+        font-family: Roboto;
+        font-size: 1.4rem;
+        color: #162b2b;
+        text-decoration: underline rgba(99,105,220,0.82);
+    }
+    .add:hover{
+        text-decoration: underline rgba(0,48,220,0.82);
+    }
 }

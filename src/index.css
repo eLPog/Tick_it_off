@@ -1,23 +1,26 @@
 * {
   box-sizing: border-box;
+  margin:0;
+  padding:0;
 }
 
 body {
-margin:0;
-  padding:0;
-  background-color: #c2e7f0;
+
 
 }
 #root {
   font-family: sans-serif;
   padding:0;
   margin: 0;
-  background-color: blue;
   animation: body-appear 1.5s ease-out forwards;
   width: 100%;
 }
 .mainContainer {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 

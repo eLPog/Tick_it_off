@@ -39,7 +39,7 @@ export function RegisterForm() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${apiData}/register`, {
+      const res = await fetch(`${apiData}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,6 +51,7 @@ export function RegisterForm() {
           password2,
         }),
       });
+      console.log(res);
       if (res.status === 404) {
         setInfo('We have some error. Please try again');
         return;
@@ -87,33 +88,32 @@ export function RegisterForm() {
   return (
     !isLogged ? (
       <>
-        <div className="centered">
-          <form className={`${styles.registerForm} animateElement`} onSubmit={submitForm}>
-            <label htmlFor="registerEmail">
-              Email
-            </label>
-            <input type="email" id="registerEmail" required onChange={emailHandler} />
-            <label htmlFor="registerName">
-              Name
-            </label>
-            <input type="text" id="registerName" required onChange={nameHandler} />
-            <label htmlFor="registerPassword">
-              Password
-            </label>
-            <input type="password" id="registerPassword" required onChange={passwordHandler} />
-            <label htmlFor="registerPassword2">
-              Repeat password
-            </label>
-            <input type="password" id="registerPassword2" required onChange={password2Handler} />
-            <Button text="Register" disabled={isButtonActive ? '' : 'disabled'} />
-          </form>
-        </div>
+
+        <form className={`${styles.registerForm} animateElement`} onSubmit={submitForm}>
+          <label htmlFor="registerEmail">
+            Email
+          </label>
+          <input type="email" id="registerEmail" required onChange={emailHandler} />
+          <label htmlFor="registerName">
+            Name
+          </label>
+          <input type="text" id="registerName" required onChange={nameHandler} />
+          <label htmlFor="registerPassword">
+            Password
+          </label>
+          <input type="password" id="registerPassword" required onChange={passwordHandler} />
+          <label htmlFor="registerPassword2">
+            Repeat password
+          </label>
+          <input type="password" id="registerPassword2" required onChange={password2Handler} />
+          <Button text="Register" disabled={isButtonActive ? '' : 'disabled'} />
+        </form>
         {info && (
-        <div className={`centered ${styles.errorInfo}`}>
+        <div className={styles.errorInfo}>
           <p>{info}</p>
         </div>
         )}
-        <div className={`centered ${styles.info}`}>
+        <div className={styles.info}>
           <p>All fields are required and the password must be min. 5 characters long</p>
         </div>
 

@@ -38,22 +38,21 @@ export function LoginForm() {
 
     !isLogged ? (
       <>
-        <div className={styles.container}>
-          <form className={`${styles.loginForm} animateElement`} onSubmit={formSend}>
-            <label htmlFor="loginEmail">
-              Email
-            </label>
-            <input type="email" id="loginEmail" onChange={emailHandler} required />
-            <label htmlFor="loginPassword">
-              Password
-            </label>
-            <input type="password" id="loginPassword" onChange={passwordHandler} required />
-            <Button text="Login" disabled={isButtonActive ? '' : 'disabled'} />
-          </form>
-        </div>
+        <form className={`${styles.loginForm} animateElement`} onSubmit={formSend}>
+          <label htmlFor="loginEmail">
+            Email
+          </label>
+          <input type="email" id="loginEmail" onChange={emailHandler} required />
+          <label htmlFor="loginPassword">
+            Password
+          </label>
+          <input type="password" id="loginPassword" onChange={passwordHandler} required />
+          <Button text="Login" disabled={isButtonActive ? '' : 'disabled'} />
+        </form>
+
         {errorNotification && (
-        <div className={`centered ${styles.errorInfo}`}>
-          <p>{errorNotification}</p>
+        <div className={styles.errorInfo}>
+          {errorNotification}
 
         </div>
         )}

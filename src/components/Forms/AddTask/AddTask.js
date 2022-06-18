@@ -62,31 +62,31 @@ export function AddTask() {
 
   return (
     <>
-      <div className="centered">
-        <form className={`${styles.addTaskForm} animateElement`} onSubmit={fetchNewTask}>
-          <label htmlFor="taskTitle">
-            Title
-          </label>
-          <input type="text" id="taskTitle" onChange={titleHandler} />
-          <label htmlFor="taskContent">
-            Content
-          </label>
-          <textarea id="taskContent" onChange={contentHandler} />
-          <Button text="Add" disabled={isButtonActive ? '' : 'disabled'} />
-        </form>
-      </div>
+
+      <form className={`${styles.addTaskForm} animateElement`} onSubmit={fetchNewTask}>
+        <label htmlFor="taskTitle">
+          Title
+        </label>
+        <input type="text" id="taskTitle" onChange={titleHandler} />
+        <label htmlFor="taskContent">
+          Content
+        </label>
+        <textarea id="taskContent" onChange={contentHandler} />
+        <Button text="Add" disabled={isButtonActive ? '' : 'disabled'} />
+      </form>
+
       {errorNotification && (
-        <div className={`centered ${styles.errorInfo}`}>
+        <div className={styles.errorInfo}>
           <p>{errorNotification}</p>
         </div>
       )}
       {errorInfo && (
-      <div className={`centered ${styles.errorInfo}`}>
+      <div className={styles.errorInfo}>
         <p>{errorInfo}</p>
       </div>
       )}
       {info && (
-      <div className={`centered ${styles.info}`}>
+      <div className={styles.info}>
         <p>{info}</p>
       </div>
       )}

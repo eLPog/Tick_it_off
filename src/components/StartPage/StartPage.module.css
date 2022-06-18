@@ -1,11 +1,12 @@
-.welcomeContainer {
+.container {
     color: white;
     border-radius: 6px;
     padding: 3rem;
     margin: 3rem auto;
-    width: 90%;
-    max-width: 40rem;
+    width: 80vh;
+    background-color: #162b2b;
     font-size: 1.2rem;
+
 
 }
 .text {
@@ -19,21 +20,8 @@
 }
 
 @media only screen and (max-width:360px){
-    .welcomeContainer {
-        width: 100%;
-        position: relative;
-        margin:0 90px;
-
-    }
-    .text {
-        background-color: green;
-        text-indent: 2rem;
-        letter-spacing: 0.2rem;
-    }
-    .data {
-        background-color: yellowgreen;
-        display: flex;
-        flex-direction: column;
-        gap:1rem;
+    .container {
+        margin:0;
+        border-radius: 0;
     }
 }

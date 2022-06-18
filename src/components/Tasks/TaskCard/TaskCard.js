@@ -69,7 +69,7 @@ export function TaskCard(props) {
             <strong>Title:</strong>
             {props.title}
           </p>
-          <p>
+          <p className={styles.createdAt}>
             <strong>
               Created at:
             </strong>
