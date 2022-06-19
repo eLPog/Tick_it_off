@@ -22,13 +22,6 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-
-
-
-
-
-
-
 .modal {
   position: fixed;
   z-index: 100;
@@ -61,7 +54,7 @@ body {
     opacity:100
   }
 }
-@media only screen and (min-width: 360px){
+@media only screen and (max-width: 460px){
   .modal {
     position: absolute;
     top:10vh;

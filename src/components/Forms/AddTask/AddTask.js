@@ -24,10 +24,10 @@ export function AddTask() {
     setContent(e.target.value);
   };
   useEffect(() => {
-    if (title.length > 100 || content.length > 500) {
+    if (title.trim().length > 100 || content.trim().length > 500) {
       setErrorInfo('The title must be between 1 and 100 characters long. ' +
           'Task content must be between 1 and 500 characters long');
-    } if (title.length < 1 || content.length < 1) {
+    } if (title.trim().length < 1 || content.trim().length < 1) {
       setInfo('Add title (max. 100 characters) and content (max. 500 characters)');
     } else {
       setIsButtonActive(true);
@@ -37,6 +37,10 @@ export function AddTask() {
 
   const fetchNewTask = async (e) => {
     e.preventDefault();
+    if (title.trim().length < 1 || content.trim().length < 1) {
+      setErrorInfo('Task need a title and content');
+      return;
+    }
     try {
       const res = await fetch(`${apiData}/tasks`, {
         method: 'POST',
@@ -61,7 +65,7 @@ export function AddTask() {
   };
 
   return (
-    <>
+    <div className={styles.container}>
 
       <form className={`${styles.addTaskForm} animateElement`} onSubmit={fetchNewTask}>
         <label htmlFor="taskTitle">
@@ -91,6 +95,6 @@ export function AddTask() {
       </div>
       )}
       {taskAdded && <Navigate to="/tasks" replace />}
-    </>
+    </div>
   );
 }

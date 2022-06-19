@@ -87,8 +87,8 @@ export function RegisterForm() {
 
   return (
     !isLogged ? (
-      <>
 
+      <div className={styles.container}>
         <form className={`${styles.registerForm} animateElement`} onSubmit={submitForm}>
           <label htmlFor="registerEmail">
             Email
@@ -109,15 +109,15 @@ export function RegisterForm() {
           <Button text="Register" disabled={isButtonActive ? '' : 'disabled'} />
         </form>
         {info && (
-        <div className={styles.errorInfo}>
-          <p>{info}</p>
-        </div>
+          <div className={styles.errorInfo}>
+            <p>{info}</p>
+          </div>
         )}
         <div className={styles.info}>
           <p>All fields are required and the password must be min. 5 characters long</p>
         </div>
+      </div>
 
-      </>
     ) : <Navigate to="/user" />
   );
 }

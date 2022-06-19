@@ -36,8 +36,14 @@ export function UserStartPage() {
             {userData.lastLogin}
           </p>
           <p>
-            <strong>Registered On: </strong>
-            {userData.registerAt}
+            <span className={styles.option}>
+              {' '}
+              <strong>Registered On: </strong>
+            </span>
+            <span className={styles.data}>
+              {' '}
+              {userData.registerAt}
+            </span>
           </p>
         </div>
         <div className={styles.actions}>

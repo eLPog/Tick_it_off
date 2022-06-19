@@ -37,7 +37,7 @@ export function LoginForm() {
   return (
 
     !isLogged ? (
-      <>
+      <div className={styles.container}>
         <form className={`${styles.loginForm} animateElement`} onSubmit={formSend}>
           <label htmlFor="loginEmail">
             Email
@@ -57,7 +57,7 @@ export function LoginForm() {
         </div>
         )}
 
-      </>
+      </div>
     ) : <Navigate to="/user" />
 
   );
