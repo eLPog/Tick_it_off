@@ -59,4 +59,50 @@
 
     }
 }
+@media only screen and (max-width: 576px){
+    .registerForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+
+    }
+    .registerForm label {
+        margin-bottom: 0;
+    }
+    .registerForm input {
+        margin: 0;
+        border-radius: 10px;
+        height: 2rem;
+        font-size: 1.4rem;
+    }
+    .registerForm input:focus {
+        background-color: #88dfdf;
+        color:#008080;
+        height: 2rem;
+        font-size: 1.4rem;
+    }
+
+
+    .errorInfo {
+        background-color: rgba(255,137,147,0.82);
+        width: auto;
+        animation: info-appear 0.3s ease-in forwards;
+        box-shadow: 2px 3px 15px darkred;
+        text-align: center;
+
+    }
+    .info {
+        background-color: #11acac;
+        font-size: 1.1rem;
+        width: auto;
+        height: auto;
+        margin:0 20px;
+        font-family: "Calisto MT";
+        animation: info-appear 2.5s ease-in forwards;
+        border-radius: 6px;
+        text-align: center;
+    }
+}
 

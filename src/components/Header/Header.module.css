@@ -56,3 +56,23 @@ button {
 .activated a {
     color:blue;
 }
+
+@media only screen and (max-width: 576px){
+    .headerContainer {
+        width: auto;
+        padding:0;
+        height:10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #008080;
+    }
+    .icon {
+        display: none;
+    }
+    .nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+}

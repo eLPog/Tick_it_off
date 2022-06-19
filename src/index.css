@@ -54,7 +54,15 @@ body {
     opacity:100
   }
 }
-@media only screen and (max-width: 460px){
+@media only screen and (max-width: 576px){
+  body {
+    background-color: red;
+  }
+  .mainContainer {
+    width: auto;
+    padding: 0;
+    margin:0;
+  }
   .modal {
     position: absolute;
     top:10vh;
@@ -64,5 +72,13 @@ body {
     background-color: #c2e7f0;
     width: 90%;
     height: 35%;
+  }
+  #root {
+    font-family: sans-serif;
+    padding:0;
+    margin: 0;
+    animation: body-appear 1.5s ease-out forwards;
+    width: 100vw;
+
   }
 }

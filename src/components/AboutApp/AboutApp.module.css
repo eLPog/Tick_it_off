@@ -27,9 +27,20 @@ a {
     gap:2rem;
     margin-top: 3rem;
 }
-@media only screen and (max-width:360px){
+@media only screen and (max-width:576px){
     .container {
         margin:0;
         border-radius: 0;
+        font-size: 1rem;
+        padding: 0;
+    }
+    .text {
+        text-indent: 5px;
+        letter-spacing:0;
+        padding: 20px;
+        margin:0 40px;
+    }
+    .data {
+        padding: 20px;
     }
 }
