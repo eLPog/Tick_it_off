@@ -13,6 +13,9 @@
     text-indent: 2rem;
     letter-spacing: 0.2rem;
 }
+.text ul {
+    margin-bottom: 10px;
+}
 .data {
     display: flex;
     flex-direction: column;
