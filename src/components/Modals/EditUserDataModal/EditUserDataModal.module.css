@@ -28,3 +28,37 @@ label, input {
     font-size: 1.4rem;
 
 }
+@media only screen and (max-width: 576px){
+    .local {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+    .editForm {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+
+    }
+    label, input {
+        padding:0;
+        margin:0;
+    }
+
+    .editForm input:focus {
+        background-color: #88dfdf;
+        color:#008080;
+        height: 2rem;
+        font-size: 1.4rem;
+    }
+    .actions button {
+        margin:1rem;
+    }
+    .info {
+        font-family: Roboto;
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+
+    }
+}

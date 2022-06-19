@@ -57,7 +57,7 @@ button {
     color:blue;
 }
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 600px){
     .headerContainer {
         width: auto;
         padding:0;

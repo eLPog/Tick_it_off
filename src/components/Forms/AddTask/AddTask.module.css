@@ -47,6 +47,8 @@ label {
     padding: 10px 15px;
     box-shadow: 2px 3px 15px darkred;
     text-align: center;
+    box-shadow: 2px 3px 15px darkred;
+
 
 }
 .info {
@@ -67,6 +69,23 @@ label {
     to {
         opacity:100;
         transform: translateY(0);
+
+    }
+}
+@media only screen and (max-width: 576px) {
+
+    .errorInfo {
+        width: auto;
+        margin-bottom: 20px;
+        padding: 10px 15px;
+
+
+    }
+    .info {
+        width: auto;
+        font-family: "Calisto MT";
+        padding: 5px 10px;
+
 
     }
 }

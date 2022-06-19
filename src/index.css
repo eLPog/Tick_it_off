@@ -56,7 +56,6 @@ body {
 }
 @media only screen and (max-width: 576px){
   body {
-    background-color: red;
   }
   .mainContainer {
     width: auto;
@@ -65,8 +64,8 @@ body {
   }
   .modal {
     position: absolute;
-    top:10vh;
-    left:10vw;
+    top:1vh;
+    left:5vw;
     z-index: 100;
     overflow: hidden;
     background-color: #c2e7f0;
