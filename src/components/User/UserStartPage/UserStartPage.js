@@ -19,11 +19,13 @@ export function UserStartPage() {
   return (
     <>
       <div className={`${styles.userCard} animateElement`}>
-        Welcome
-        <span className={styles.userEmail}>
+
+        <div className={styles.welcome}>
+          Welcome
           {' '}
-          {userData.name}
-        </span>
+          <strong>{userData.name}</strong>
+
+        </div>
         <div className={styles.userData}>
           <p>
             <strong>Email: </strong>

@@ -1,25 +1,31 @@
 * {
   box-sizing: border-box;
+  margin:0;
+  padding:0;
 }
-
-
-
 
 body {
-  font-family: sans-serif;
-  margin: 0;
-  background-color: #e7f8f8;
-  animation: body-appear 1.5s ease-out forwards;
+
 
 }
-
-.centered {
-  margin: 3rem auto;
-  text-align: center;
+#root {
+  font-family: sans-serif;
+  padding:0;
+  margin: 0;
+  animation: body-appear 1.5s ease-out forwards;
+  width: 100%;
+}
+.mainContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
+
+
+
+
 
 
 
@@ -53,5 +59,17 @@ body {
   }
   to {
     opacity:100
+  }
+}
+@media only screen and (min-width: 360px){
+  .modal {
+    position: absolute;
+    top:10vh;
+    left:10vw;
+    z-index: 100;
+    overflow: hidden;
+    background-color: #c2e7f0;
+    width: 90%;
+    height: 35%;
   }
 }

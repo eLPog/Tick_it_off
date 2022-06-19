@@ -1,13 +1,9 @@
-.container {
-    margin: 3rem auto;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .loginForm {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .loginForm input {
@@ -41,25 +37,17 @@
     }
 }
 
-@media (max-width: 580px){
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        width: 100vh;
-    }
-    .loginForm {
-        display: flex;
-        flex-direction: column;
+@media only screen and (max-width:360px) {
 
+    button {
+        margin-bottom: 50px;
+    }
+    .loginForm label {
+        font-size: 1.2rem;
     }
 
     .loginForm input {
-        margin: 5px;
-        border-radius: 10px;
-        height: 2rem;
-        font-size: 1.4rem;
+
     }
     .loginForm input:focus {
         background-color: #88dfdf;
@@ -70,7 +58,12 @@
 
     .errorInfo {
         background-color: rgba(255,137,147,0.82);
-        width: 50vh;
+        width: 60vw;
+        padding:13px 15px;
+        border-radius: 4px;
+        box-shadow: 2px 3px 15px darkred;
+        text-align: center;
+        font-family: Roboto;
         animation: errorInfo-appear 0.3s ease-in forwards;
 
     }

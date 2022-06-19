@@ -2,6 +2,7 @@
 .registerForm {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 
 }
 .registerForm label {
@@ -19,11 +20,15 @@
     height: 2rem;
     font-size: 1.4rem;
 }
+
+
 .errorInfo {
     background-color: rgba(255,137,147,0.82);
-    width: 70vh;
+    width: 40vw;
     animation: info-appear 0.3s ease-in forwards;
-
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    box-shadow: 2px 3px 15px darkred;
 
 }
 .info {
@@ -32,6 +37,8 @@
     font-size: 1.1rem;
     font-family: "Calisto MT";
     animation: info-appear 2.5s ease-in forwards;
+    padding: 10px 15px;
+    border-radius: 6px;
 }
 
 @keyframes info-appear {
@@ -45,3 +52,25 @@
 
     }
 }
+
+@media only screen and (max-width: 360px){
+
+    .errorInfo {
+        background-color: rgba(255, 137, 147, 0.82);
+        animation: info-appear 0.3s ease-in forwards;
+        box-shadow: 2px 3px 15px darkred;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    p {
+        letter-spacing: 0;
+        text-indent: 0;
+    }
+    .registerForm {
+        display: flex;
+        flex-direction: column;
+        margin:0;
+        padding: 0;
+
+    }
+    }
