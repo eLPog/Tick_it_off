@@ -54,6 +54,18 @@ body {
     opacity:100
   }
 }
+@media only screen and (max-width: 1000px){
+  .modal {
+    position: absolute;
+    top:1vh;
+    left:1vw;
+    z-index: 100;
+    overflow: hidden;
+    background-color: #c2e7f0;
+    width: 90%;
+    height: 60%;
+  }
+}
 @media only screen and (max-width: 576px){
   body {
   }
@@ -70,7 +82,7 @@ body {
     overflow: hidden;
     background-color: #c2e7f0;
     width: 90%;
-    height: 35%;
+    height: 45%;
   }
   #root {
     font-family: sans-serif;

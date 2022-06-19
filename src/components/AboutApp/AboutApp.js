@@ -31,7 +31,7 @@ export function AboutApp() {
           Backend
         </a>
         <a
-          href="https://github.com/eLPog/Do_That_Now"
+          href="https://github.com/eLPog/Tick_it_off"
           target="_blank"
           rel="noreferrer"
         >

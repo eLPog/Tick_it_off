@@ -28,3 +28,29 @@
         justify-content: space-around;
 }
 
+@media only screen and (max-width: 576px){
+    .userCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin:0;
+        background-color: #162b2b;
+        color:white;
+        padding:10px 0;
+        row-gap: 2px;
+        width: 100%;
+    }
+    .userData {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+    .actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+}
+
