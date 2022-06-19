@@ -61,3 +61,15 @@ body {
     opacity:100
   }
 }
+@media only screen and (min-width: 360px){
+  .modal {
+    position: absolute;
+    top:10vh;
+    left:10vw;
+    z-index: 100;
+    overflow: hidden;
+    background-color: #c2e7f0;
+    width: 90%;
+    height: 35%;
+  }
+}
