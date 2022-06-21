@@ -66,7 +66,25 @@
     margin-top: 0;
     transform: rotate(-405deg);
 }
+.activated{
+    color:#162b2b;
+    animation: activeMenu 0.6s ease-in-out forwards;
+}
+@keyframes activeMenu {
+    0% {
+        color:#162b2b;
+    }
+    50% {
+        color:#FFFFFF;
+        font-weight: bolder;
 
+    }
+    100% {
+        color:#162b2b;
+        font-weight: bold;
+
+    }
+}
 @media (max-width: 900px){
     .menuButtonContainer {
         display: flex;
@@ -107,6 +125,21 @@
     .menu >li:not(:last-child){
         border-bottom: 1px solid #444;
 
+    }
+    @keyframes activeMenu {
+        0% {
+            color:#FFFFFF;
+        }
+        50% {
+            color:#162b2b;
+            font-weight: bolder;
+
+        }
+        100% {
+            color:#FFFFFF;
+            font-weight: bold;
+
+        }
     }
 }
 

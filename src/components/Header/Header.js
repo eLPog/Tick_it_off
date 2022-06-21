@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 const menuForLogged = (
   <ul className={styles.menu}>
     <li>
-      <NavLink to="/aboutApp">
+      <NavLink to="/aboutApp" className={({ isActive }) => `${isActive ? ' activated' : ''}`}>
         About App
       </NavLink>
     </li>
@@ -32,18 +32,36 @@ const menuForNotLogged = (
 
   <ul className={styles.menu}>
     <li>
-      <NavLink to="/aboutApp">
+      <NavLink
+        to="/aboutApp"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
+      >
         About App
       </NavLink>
     </li>
     <li>
-      <NavLink to="/login">Login</NavLink>
+      <NavLink
+        to="/login"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
+      >
+        Login
+      </NavLink>
     </li>
     <li>
-      <NavLink to="/register">Register</NavLink>
+      <NavLink
+        to="/register"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
+      >
+        Register
+      </NavLink>
     </li>
     <li>
-      <NavLink to="/">Main Page</NavLink>
+      <NavLink
+        to="/"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
+      >
+        Main Page
+      </NavLink>
     </li>
   </ul>
 
