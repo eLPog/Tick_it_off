@@ -45,7 +45,7 @@
     opacity: 1;
     transform: scaleX(-1);
 }
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 900px) {
 
 
     .item {
@@ -86,4 +86,40 @@
         transform: scaleX(-1);
     }
 
+}
+@media only screen and (max-width: 400px){
+
+    .item {
+        margin: 1rem 0;
+        padding: 0;
+        width: 100%;
+        min-height: 10vh;
+
+    }
+    .title {
+       display: none;
+    }
+    .content {
+        margin:0;
+    }
+
+
+    .actions {
+        display: flex;
+        padding:10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .actions img {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        opacity: 0.6;
+    }
+    .actions img:hover {
+        opacity: 1;
+        transform: scaleX(-1);
+    }
 }

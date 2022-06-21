@@ -4,71 +4,67 @@ import icon1 from '../../assets/icon1.png';
 import styles from './Header.module.css';
 
 const menuForLogged = (
-  <nav className={styles.nav}>
-    <ul>
-      <li>
-        <NavLink
-          to="/aboutApp"
-          className={({ isActive }) => `${isActive ? ' activated' : ''}`}
-        >
-          About App
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/logout">
-          LogOut
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/user">User</NavLink>
-      </li>
-      <li>
-        <NavLink to="/tasks">Tasks</NavLink>
-      </li>
-      <li>
-        <NavLink to="/add">Add Task</NavLink>
-      </li>
+  <ul className={styles.menu}>
+    <li>
+      <NavLink to="/aboutApp">
+        About App
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/logout">
+        LogOut
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/user">User</NavLink>
+    </li>
+    <li>
+      <NavLink to="/tasks">Tasks</NavLink>
+    </li>
+    <li>
+      <NavLink to="/add">Add Task</NavLink>
+    </li>
 
-    </ul>
-  </nav>
+  </ul>
+
 );
 const menuForNotLogged = (
-  <nav className={styles.nav}>
-    <ul>
-      <li>
-        <NavLink
-          to="/aboutApp"
-          className={(isActive) => `${isActive ? styles.activated : ''}`}
-        >
-          About App
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
-      <li>
-        <NavLink to="/">Main Page</NavLink>
-      </li>
 
-    </ul>
-  </nav>
+  <ul className={styles.menu}>
+    <li>
+      <NavLink to="/aboutApp">
+        About App
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/login">Login</NavLink>
+    </li>
+    <li>
+      <NavLink to="/register">Register</NavLink>
+    </li>
+    <li>
+      <NavLink to="/">Main Page</NavLink>
+    </li>
+  </ul>
+
 );
 
 export function Header() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
   return (
-    <div className={styles.headerContainer}>
-      <div className={styles.title}>
+    <section className={styles.headerContainer}>
+      <div className={styles.logo}>
         <NavLink to="/">Tick it off</NavLink>
       </div>
+      <input id={styles.menuToggle} type="checkbox" />
+      <label className={styles.menuButtonContainer} htmlFor={styles.menuToggle}>
+        <div className={styles.menuButton} />
+      </label>
       {isLogged ? menuForLogged : menuForNotLogged}
-      <div className={styles.icon}>
-        <img src={icon1} alt="Task list icon" />
+      {/* <div className={styles.icon}> */}
+      {/*  <img src={icon1} alt="Task list icon" /> */}
 
-      </div>
-    </div>
+      {/* </div> */}
+    </section>
   );
 }
