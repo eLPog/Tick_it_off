@@ -18,19 +18,18 @@ export function TasksList() {
   const taskChangedHandler = () => {
     setTaskChanged(true);
   };
-
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       const data = await fetch(`${apiData}/tasks`, {
         method: 'GET',
         headers: {
           authorization: `Bearer ${jwt}`,
         },
       });
-      const res = await data.json();
-      setTasks(res);
-    };
-    fetchData().catch(console.error);
+      const tasks = await data.json();
+      setTasks(tasks);
+    })();
+    // fetchData().catch((err) => console.log(err));
     setTaskChanged(false);
   }, [taskChanged]);
 
@@ -66,6 +65,7 @@ export function TasksList() {
       content={el.content}
       createdAt={el.createdAt}
       taskID={el.taskID}
+      isDone={el.isDone}
       taskChanged={taskChangedHandler}
     />
   ));
@@ -75,19 +75,25 @@ export function TasksList() {
       <NavLink to="/add" className={styles.add}> Add your first Task</NavLink>
     </div>
   );
+  const loadingContent = (
+    <div className={styles.noTasksContainer}>
+      <p className={styles.info}>
+        Loading...
+      </p>
+    </div>
+  );
 
   return (
     <>
       {tasks.length < 1 && noTasks}
       <ul className={`${styles.list} animateElement`}>
         {tasksList}
-
       </ul>
       <div className={styles.actions}>
         <Button text={sortAlphaAsc ? 'Z-A' : 'A-Z'} onClick={sortAfterAlphabet} />
         <Button text={sortDateAsc ? 'Oldest' : 'Newest'} onClick={sortAfterDate} />
       </div>
-
     </>
+
   );
 }

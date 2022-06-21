@@ -16,13 +16,28 @@ const menuForLogged = (
       </NavLink>
     </li>
     <li>
-      <NavLink to="/user">User</NavLink>
+      <NavLink
+        to="/user"
+        className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+      >
+        User
+      </NavLink>
     </li>
     <li>
-      <NavLink to="/tasks">Tasks</NavLink>
+      <NavLink
+        to="/tasks"
+        className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+      >
+        Tasks
+      </NavLink>
     </li>
     <li>
-      <NavLink to="/add">Add Task</NavLink>
+      <NavLink
+        to="/add"
+        className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+      >
+        Add Task
+      </NavLink>
     </li>
 
   </ul>

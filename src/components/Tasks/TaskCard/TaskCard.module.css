@@ -22,6 +22,8 @@
 }
 .content {
     padding-left: 50px;
+    font-family: 'Indie Flower';
+    font-size: 1.3rem;
 }
 
 .actions {
@@ -44,6 +46,15 @@
 .actions img:hover {
     opacity: 1;
     transform: scaleX(-1);
+}
+.isDone {
+background-color: #cccccc;
+    border:2px solid #162b2b;
+    text-decoration: #162b2b line-through;
+    opacity:0.5;
+}
+.isDone .title p {
+    display: none;
 }
 @media only screen and (max-width: 900px) {
 

@@ -5,31 +5,40 @@ import { authSliceActions } from '../../../store/authSlice';
 import { EditTask } from '../../Forms/EditTasks/EditTask';
 import iconDelete from '../../../assets/iconDelete.png';
 import iconEdit from '../../../assets/iconEdit.png';
+import iconDone from '../../../assets/iconDone.png';
 import { apiData } from '../../../utils/apiData';
 
 export function TaskCard(props) {
   const { errorNotification, jwt } = useSelector((state) => state.authSlice);
   const dispatch = useDispatch();
   const [showEditForm, setShowEditForm] = useState(false);
-
+  const [taskFinished, setTaskFinished] = useState(props.isDone);
   const showEditFormHandler = () => {
     showEditForm ? setShowEditForm(false) : setShowEditForm(true);
   };
+  const isTaskDoneToggle = async () => {
+    taskFinished ? setTaskFinished(false) : setTaskFinished(true);
+  };
 
   const editTask = async (title, content) => {
-    await fetch(`${apiData}/tasks/${props.taskID}`, {
-      method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title,
-        content,
-      }),
-    });
-    props.taskChanged();
-    setShowEditForm(false);
+    try {
+      await fetch(`${apiData}/tasks/${props.taskID}`, {
+        method: 'PATCH',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          content,
+        }),
+      });
+      props.taskChanged();
+      setShowEditForm(false);
+    } catch (err) {
+      dispatch(authSliceActions.setNotification('Error by editing.Please try again'));
+      console.log(err);
+    }
   };
 
   const deleteTask = async () => {
@@ -51,6 +60,29 @@ export function TaskCard(props) {
       console.log(err);
     }
   };
+  const taskDone = async () => {
+    try {
+      const data = await fetch(`${apiData}/tasks/${props.taskID}`, {
+        method: 'PUT',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!data.ok) {
+        dispatch(authSliceActions.setNotification('Error by deleting. Please try again'));
+        return;
+      }
+      taskFinished ? setTaskFinished(false) : setTaskFinished(true);
+      const res = await data.json();
+      console.log(res);
+      dispatch(authSliceActions.setNotification(''));
+      props.taskChanged();
+    } catch (err) {
+      dispatch(authSliceActions.setNotification('Error by deleting. Please try again'));
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -63,7 +95,7 @@ export function TaskCard(props) {
         editTaskFetch={editTask}
       />
       )}
-      <li className={styles.item}>
+      <li className={`${styles.item} ${!taskFinished ? '' : styles.isDone}`}>
         <div className={styles.title}>
           <p>
             <strong>Title:</strong>
@@ -80,6 +112,12 @@ export function TaskCard(props) {
           <p>{props.content}</p>
         </div>
         <div className={styles.actions}>
+          <button onClick={taskDone}>
+            <img
+              src={iconDone}
+              alt="Finished task icon"
+            />
+          </button>
           <button onClick={showEditFormHandler}><img src={iconEdit} alt="Edit task icon" /></button>
           <button onClick={deleteTask}><img src={iconDelete} alt="Delete task icon" /></button>
           <p>{errorNotification}</p>
