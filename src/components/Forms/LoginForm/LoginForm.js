@@ -58,7 +58,7 @@ export function LoginForm() {
         )}
 
       </div>
-    ) : <Navigate to="/user" />
+    ) : <Navigate to="/tasks" />
 
   );
 }

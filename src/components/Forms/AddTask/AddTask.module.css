@@ -17,12 +17,13 @@ label {
     margin: 5px;
     border-radius: 7px;
     height: 2rem;
+    width: 50%;
     font-size: 1.4rem;
     text-align: center;
 }
 .addTaskForm textarea {
-    width: 50vh;
-    height: 10vh;
+    width: 70%;
+    height: 50%;
     border-radius: 10px;
     font-size: 1.4rem;
     text-align: center;
@@ -53,7 +54,8 @@ label {
 }
 .info {
     background-color: #11acac;
-    width: 30vw;
+    width: 70%;
+    align-self: center;
     font-size: 1.1rem;
     font-family: "Calisto MT";
     padding: 10px 15px;

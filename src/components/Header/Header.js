@@ -6,37 +6,37 @@ import styles from './Header.module.css';
 const menuForLogged = (
   <ul className={styles.menu}>
     <li>
-      <NavLink to="/aboutApp" className={({ isActive }) => `${isActive ? ' activated' : ''}`}>
-        About App
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/logout">
-        LogOut
-      </NavLink>
-    </li>
-    <li>
       <NavLink
-        to="/user"
-        className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+        to="/add"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
       >
-        User
+        Add Task
       </NavLink>
     </li>
     <li>
       <NavLink
         to="/tasks"
-        className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
       >
         Tasks
       </NavLink>
     </li>
     <li>
       <NavLink
-        to="/add"
-        className={({ isActive }) => `${isActive ? ' activated' : ''}`}
+        to="/user"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
       >
-        Add Task
+        User
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/aboutApp" className={({ isActive }) => `${isActive ? styles.activated : ''}`}>
+        About App
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/logout">
+        LogOut
       </NavLink>
     </li>
 
@@ -48,10 +48,10 @@ const menuForNotLogged = (
   <ul className={styles.menu}>
     <li>
       <NavLink
-        to="/aboutApp"
+        to="/"
         className={({ isActive }) => `${isActive ? styles.activated : ''}`}
       >
-        About App
+        Main Page
       </NavLink>
     </li>
     <li>
@@ -72,12 +72,13 @@ const menuForNotLogged = (
     </li>
     <li>
       <NavLink
-        to="/"
+        to="/aboutApp"
         className={({ isActive }) => `${isActive ? styles.activated : ''}`}
       >
-        Main Page
+        About App
       </NavLink>
     </li>
+
   </ul>
 
 );

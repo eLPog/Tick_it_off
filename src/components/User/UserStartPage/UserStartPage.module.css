@@ -5,10 +5,12 @@
     background-color: #162b2b;
     color:white;
     padding: 50px 70px;
+    border-radius: 13%;
     row-gap: 20px;
 }
 
 .welcome {
+    font-size: 2em;
 
 }
 .userData {

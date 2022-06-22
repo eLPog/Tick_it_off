@@ -7,32 +7,18 @@ import { apiData } from '../../../utils/apiData';
 import { Button } from '../../commons/Button/Button';
 
 export function TasksList() {
-  const { jwt, notification } = useSelector((state) => state.authSlice);
+  const { jwt } = useSelector((state) => state.authSlice);
   const [tasks, setTasks] = useState([]);
   const [taskChanged, setTaskChanged] = useState(false);
-  const [sortAlpha, setSortAlpha] = useState(true);
-  const [sortDate, setSortDate] = useState(false);
+  const [sortAlpha, setSortAlpha] = useState(false);
+  const [sortDate, setSortDate] = useState(true);
   const [sortAlphaAsc, setSortAlphaAsc] = useState(true);
   const [sortDateAsc, setSortDateAsc] = useState(true);
+  const [info, setInfo] = useState('');
 
   const taskChangedHandler = () => {
     setTaskChanged(true);
   };
-  useEffect(() => {
-    (async () => {
-      const data = await fetch(`${apiData}/tasks`, {
-        method: 'GET',
-        headers: {
-          authorization: `Bearer ${jwt}`,
-        },
-      });
-      const tasks = await data.json();
-      setTasks(tasks);
-    })();
-    // fetchData().catch((err) => console.log(err));
-    setTaskChanged(false);
-  }, [taskChanged]);
-
   const sortTasks = (tasks) => tasks.sort((el1, el2) => {
     if (sortAlpha) {
       if (sortAlphaAsc) {
@@ -45,8 +31,28 @@ export function TasksList() {
     }
     return el1.createdAt > el2.createdAt ? 1 : -1;
   });
-  const sortedTasks = sortTasks(tasks, true);
-
+  useEffect(() => {
+    (async () => {
+      const data = await fetch(`${apiData}/tasks`, {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+        },
+      });
+      if (!data.ok) {
+        setInfo('Server Error. Please try again');
+        return;
+      }
+      const tasks = await data.json();
+      if (tasks.length < 1) {
+        setInfo('Your tasks list is empty');
+        return;
+      }
+      const sortedTasks = sortTasks(tasks);
+      setTasks(sortedTasks);
+    })();
+    setTaskChanged(false);
+  }, [taskChanged]);
   const sortAfterAlphabet = () => {
     setSortDate(false);
     sortAlphaAsc ? setSortAlphaAsc(false) : setSortAlphaAsc(true);
@@ -57,6 +63,7 @@ export function TasksList() {
     sortDateAsc ? setSortDateAsc(false) : setSortDateAsc(true);
     setSortDate(true);
   };
+  const sortedTasks = sortTasks(tasks, true);
 
   const tasksList = sortedTasks.map((el) => (
     <TaskCard
@@ -69,30 +76,23 @@ export function TasksList() {
       taskChanged={taskChangedHandler}
     />
   ));
-  const noTasks = (
-    <div className={styles.noTasksContainer}>
-      <p className={styles.info}>You dont have any tasks yet. </p>
-      <NavLink to="/add" className={styles.add}> Add your first Task</NavLink>
-    </div>
-  );
-  const loadingContent = (
-    <div className={styles.noTasksContainer}>
-      <p className={styles.info}>
-        Loading...
-      </p>
-    </div>
+  const information = (
+    <p className={styles.info}>{info}</p>
   );
 
   return (
     <>
-      {tasks.length < 1 && noTasks}
-      <ul className={`${styles.list} animateElement`}>
-        {tasksList}
-      </ul>
-      <div className={styles.actions}>
-        <Button text={sortAlphaAsc ? 'Z-A' : 'A-Z'} onClick={sortAfterAlphabet} />
-        <Button text={sortDateAsc ? 'Oldest' : 'Newest'} onClick={sortAfterDate} />
-      </div>
+      {info ? information : (
+        <>
+          <ul className={`${styles.list} animateElement`}>
+            {tasksList}
+          </ul>
+          <div className={styles.actions}>
+            <Button text={sortAlphaAsc ? 'Z-A' : 'A-Z'} onClick={sortAfterAlphabet} />
+            <Button text={sortDateAsc ? 'Oldest' : 'Newest'} onClick={sortAfterDate} />
+          </div>
+        </>
+      )}
     </>
 
   );

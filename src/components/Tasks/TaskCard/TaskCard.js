@@ -13,11 +13,9 @@ export function TaskCard(props) {
   const dispatch = useDispatch();
   const [showEditForm, setShowEditForm] = useState(false);
   const [taskFinished, setTaskFinished] = useState(props.isDone);
+  const [loading, setLoading] = useState(false);
   const showEditFormHandler = () => {
     showEditForm ? setShowEditForm(false) : setShowEditForm(true);
-  };
-  const isTaskDoneToggle = async () => {
-    taskFinished ? setTaskFinished(false) : setTaskFinished(true);
   };
 
   const editTask = async (title, content) => {
