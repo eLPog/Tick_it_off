@@ -33,6 +33,10 @@ body {
   width: 50%;
   height: 35%;
 }
+a {
+  text-decoration: none;
+  color: #c2e7f0;
+}
 
 
 .animateElement {

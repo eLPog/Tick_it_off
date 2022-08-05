@@ -1,6 +1,6 @@
 import styles from './StartPage.module.css';
 
-export function StartPage() {
+export function AboutApp() {
   return (
     <div className={`${styles.container} animateElement`}>
       <div className={styles.text}>
