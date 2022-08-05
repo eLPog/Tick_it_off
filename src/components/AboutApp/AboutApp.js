@@ -30,7 +30,7 @@ export function AboutApp() {
             App is built on a relational database.
           </li>
           <li>
-            See the readme file on github for details
+            See the readme file on
             {' '}
             <a
               href="https://github.com/eLPog/To_Do_List_Backend"
@@ -39,6 +39,10 @@ export function AboutApp() {
             >
               GitHub
             </a>
+            {' '}
+            for details
+            {' '}
+
           </li>
         </ul>
         <ul>

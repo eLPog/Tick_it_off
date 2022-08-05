@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Header } from './components/Header/Header';
 import { LoginForm } from './components/Forms/LoginForm/LoginForm';
-import { AboutApp } from './components/StartPage/AboutApp';
+import { AboutApp } from './components/AboutApp/AboutApp';
 import { UserStartPage } from './components/User/UserStartPage/UserStartPage';
 import { TasksList } from './components/Tasks/TasksList/TasksList';
 import { Logout } from './components/Logout/Logout';
