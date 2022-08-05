@@ -1,0 +1,86 @@
+.wrapper {
+    width: 90%;
+    max-width: 30rem;
+    height: 70vh;
+    max-height: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top:2rem;
+
+}
+.menuItem {
+border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 15%;
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    color:white;
+    background-size: cover;
+    background-position:center center;
+    writing-mode: vertical-lr;
+
+}
+h3 {
+    text-shadow: 5px 0 5px black;
+    box-shadow: 4px 0 5px black;
+    background-color: rgba(140,147,96,0.82);
+    padding:0.2rem;
+}
+.active h3 {
+    background-color: rgba(220,197,199,0.82);
+}
+.overlay {
+    position: absolute;
+
+}
+
+.active {
+    width: 70%;
+    filter:blur(0);
+    writing-mode: horizontal-tb;
+
+}
+.active .overlay {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    text-shadow: 5px 0 5px black;
+    box-shadow: 4px 0 5px black;
+    background-color: rgba(220,197,199,0.82);
+
+}
+
+.bild-1 {
+    background-image: url("../../assets/images/photo-homePage.jpg");
+}
+.bild-2 {
+    background-image: url("../../assets/images/photo-login.jpg");
+}
+.bild-3 {
+    background-image: url("../../assets/images/photo-registration.jpg");
+
+}
+.bild-4 {
+     background-image: url("../../assets/images/photo-aboutApp.jpg");
+ }
+
+@media only screen and (max-width: 460px){
+    .wrapper {
+flex-direction: column;
+        align-items: center;
+    }
+    .menuItem {
+        width: 70%;
+    }
+    .active {
+        width: 100%;
+    }
+}
