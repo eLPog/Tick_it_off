@@ -34,7 +34,7 @@ h3 {
     cursor: pointer;
 
 }
-.active h3 {
+.activeElement h3 {
     background-color: rgba(220,197,199,0.82);
 }
 .overlay {
@@ -42,14 +42,14 @@ h3 {
 
 }
 
-.active {
+.activeElement {
     width: 70%;
     filter:blur(0);
     writing-mode: horizontal-tb;
 
 
 }
-.active .overlay {
+.activeElement .overlay {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -87,7 +87,7 @@ flex-direction: column;
         writing-mode: horizontal-tb;
 
     }
-    .active {
+    .activeElement {
         width: 100%;
 
     }

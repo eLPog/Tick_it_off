@@ -5,19 +5,19 @@ import { useSelector } from 'react-redux';
 export function WelcomePage() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
   function removeActiveClass() {
-    const element = document.getElementsByClassName('active');
-    element[1].classList.remove('active');
+    const element = document.getElementsByClassName('activeElement');
+    element[0].classList.remove('activeElement');
   }
   function addActiveClass(event) {
     removeActiveClass();
-    event.currentTarget.classList.add('active');
+    event.currentTarget.classList.add('activeElement');
   }
   return (
     <>
       <section className="wrapper animateElement">
         {/* eslint-disable */}
 
-        <article className={`menuItem active bild-1`} onMouseEnter={addActiveClass}>
+        <article className={`menuItem bild-1 activeElement`} onMouseEnter={addActiveClass}>
           <div className={`overlay`}>
               <NavLink to="/"><h3>Home</h3></NavLink>
           </div>

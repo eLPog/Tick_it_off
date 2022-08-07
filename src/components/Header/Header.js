@@ -97,6 +97,11 @@ export function Header() {
       <div className={styles.logo}>
         <NavLink to="/">Tick it off</NavLink>
       </div>
+      <h2>
+        What you can do tomorrow, do today and
+        <NavLink to="/"> Tick it off</NavLink>
+        .
+      </h2>
       <input id={styles.menuToggle} type="checkbox" />
       <label className={styles.menuButtonContainer} htmlFor={styles.menuToggle}>
         <div className={styles.menuButton} />

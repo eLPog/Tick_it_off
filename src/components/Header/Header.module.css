@@ -10,6 +10,14 @@
     color: #FFF;
     height: 50px;
     padding: 1em;
+
+}
+h2 {
+    font-family: 'Indie Flower';
+    font-stretch: extra-condensed;
+    font-style: oblique;
+;
+
 }
 .menu {
     list-style-type: none;
