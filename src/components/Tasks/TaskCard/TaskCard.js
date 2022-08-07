@@ -68,12 +68,12 @@ export function TaskCard(props) {
         },
       });
       if (!data.ok) {
-        dispatch(authSliceActions.setNotification('Error by deleting. Please try again'));
+        dispatch(authSliceActions.setNotification('Unexpected error. Please try again'));
         return;
       }
       taskFinished ? setTaskFinished(false) : setTaskFinished(true);
-      const res = await data.json();
-      console.log(res);
+      // const res = await data.json();
+      // console.log(res);
       dispatch(authSliceActions.setNotification(''));
       props.taskChanged();
     } catch (err) {

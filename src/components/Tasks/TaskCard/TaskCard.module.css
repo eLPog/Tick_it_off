@@ -10,8 +10,25 @@
     width: 90vh;
     box-shadow: #162b2b 1px 8px 11px;
     box-sizing: content-box;
-
+    transition: all 250ms ease;
+    position:relative;
 }
+.item::after{
+    transition: all 250ms ease;
+    content: "";
+    position: absolute;
+    display: block;
+    bottom:0;
+    left:0;
+    width: 0;
+    height: 0.2rem;
+    background-color: #162b2b;
+}
+
+.item:hover::after {
+    width: 100%;
+}
+
 .title {
     border-right: 2px solid #162b2b;
     padding-right: 55px;
@@ -48,14 +65,19 @@
     transform: scaleX(-1);
 }
 .isDone {
-background-color: #cccccc;
+    background-color: #cccccc;
     border:2px solid #162b2b;
     text-decoration: #162b2b line-through;
     opacity:0.5;
 }
+
 .isDone .title p {
     display: none;
 }
+.isDone:hover::after{
+   width: 0;
+}
+
 @media only screen and (max-width: 900px) {
 
 
