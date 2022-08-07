@@ -6,6 +6,14 @@ const menuForLogged = (
   <ul className={styles.menu}>
     <li>
       <NavLink
+        to="/"
+        className={({ isActive }) => `${isActive ? styles.activated : ''}`}
+      >
+        Main Page
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
         to="/add"
         className={({ isActive }) => `${isActive ? styles.activated : ''}`}
       >

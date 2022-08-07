@@ -78,7 +78,7 @@ export function AddTask() {
         <textarea id="taskContent" onChange={contentHandler} />
         <Button text="Add" disabled={isButtonActive ? '' : 'disabled'} />
         <NavLink
-          to="/tasks"
+          to="/"
         >
           <Button text="Cancel" />
         </NavLink>
