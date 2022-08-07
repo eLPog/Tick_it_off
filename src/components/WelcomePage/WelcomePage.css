@@ -71,6 +71,10 @@ h3 {
 }
 .bild-4 {
      background-image: url("../../assets/images/photo-aboutApp.jpg");
+ }.bild-5 {
+     background-image: url("../../assets/images/photo-add.jpg");
+ }.bild-6 {
+     background-image: url("../../assets/images/photo-logout.jpg");
  }
 
 @media only screen and (max-width: 460px){
