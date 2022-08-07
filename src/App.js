@@ -9,6 +9,7 @@ import { Logout } from './components/Logout/Logout';
 import { AddTask } from './components/Forms/AddTask/AddTask';
 import { RegisterForm } from './components/Forms/RegisterForm/RegisterForm';
 import { WelcomePage } from './components/WelcomePage/WelcomePage';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/logout" element={isLogged ? <Logout /> : <Navigate to="/" />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 }

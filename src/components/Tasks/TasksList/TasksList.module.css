@@ -7,6 +7,9 @@
     align-items: center;
     width: 100%;
 }
+.actions {
+    display:flex;
+}
 .actions button  {
     margin:10px 20px;
     animation: btn 1500ms ease-in-out forwards;
@@ -34,6 +37,7 @@
         width: auto;
     }
 }
-@media only screen and (max-width: 380px){
-
+@media only screen and (max-width: 480px){
+    .actions {
+flex-direction: column    }
 }
