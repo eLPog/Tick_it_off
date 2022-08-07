@@ -114,10 +114,23 @@ export function TaskCard(props) {
             <img
               src={iconDone}
               alt="Finished task icon"
+              title="Set as finished"
             />
           </button>
-          <button onClick={showEditFormHandler}><img src={iconEdit} alt="Edit task icon" /></button>
-          <button onClick={deleteTask}><img src={iconDelete} alt="Delete task icon" /></button>
+          <button onClick={showEditFormHandler}>
+            <img
+              src={iconEdit}
+              alt="Edit task icon"
+              title="Edit task"
+            />
+          </button>
+          <button onClick={deleteTask}>
+            <img
+              src={iconDelete}
+              alt="Delete task icon"
+              title="Delete task"
+            />
+          </button>
           <p>{errorNotification}</p>
         </div>
       </li>
