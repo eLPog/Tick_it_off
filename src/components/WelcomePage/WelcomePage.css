@@ -84,8 +84,11 @@ flex-direction: column;
     }
     .menuItem {
         width: 70%;
+        writing-mode: horizontal-tb;
+
     }
     .active {
         width: 100%;
+
     }
 }
