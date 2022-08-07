@@ -84,13 +84,18 @@ export function TasksList() {
     <>
       {info ? information : (
         <>
-          <ul className={`${styles.list} animateElement`}>
-            {tasksList}
-          </ul>
           <div className={styles.actions}>
+            <NavLink
+              to="/add"
+            >
+              <Button text="Add task" />
+            </NavLink>
             <Button text={sortAlphaAsc ? 'Z-A' : 'A-Z'} onClick={sortAfterAlphabet} />
             <Button text={sortDateAsc ? 'Oldest' : 'Newest'} onClick={sortAfterDate} />
           </div>
+          <ul className={`${styles.list} animateElement`}>
+            {tasksList}
+          </ul>
         </>
       )}
     </>

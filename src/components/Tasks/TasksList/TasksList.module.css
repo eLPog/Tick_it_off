@@ -9,14 +9,12 @@
 }
 .actions button  {
     margin:10px 20px;
-    animation: btn 3s ease-in-out forwards;
+    animation: btn 1500ms ease-in-out forwards;
 }
 .info {
     font-family: "Indie Flower";
     font-size: 2rem;
     margin-top: 20px;
-
-
 }
 
 
