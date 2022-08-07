@@ -21,30 +21,34 @@ export function DeleteUserAccount(props) {
       setInfo('Sorry, you cant delete a Test Account');
       return;
     }
-    const res = await fetch(`${apiData}/user`, {
-      method: 'DELETE',
-      headers: {
-        authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        password,
-      }),
-    });
+    try {
+      const res = await fetch(`${apiData}/user`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          password,
+        }),
+      });
 
-    if (res.status === 400) {
-      setInfo('Invalid password');
-      return;
+      if (res.status === 400) {
+        setInfo('Invalid password');
+        return;
+      }
+      if (res.status !== 200) {
+        setInfo('Something went wrong. Please try again.');
+        return;
+      }
+      setShowInput(false);
+      setInfo(`Account ${email} has been successfully deleted.`);
+      setTimeout(() => {
+        dispatch(authSliceActions.setJwt(''));
+      }, 3000);
+    } catch (err) {
+      console.log(err);
     }
-    if (res.status !== 200) {
-      setInfo('Something went wrong. Please try again.');
-      return;
-    }
-    setShowInput(false);
-    setInfo(`Account ${email} has been successfully deleted.`);
-    setTimeout(() => {
-      dispatch(authSliceActions.setJwt(''));
-    }, 3000);
   };
 
   return (

@@ -20,7 +20,7 @@ export function TaskCard(props) {
 
   const editTask = async (title, content) => {
     try {
-      await fetch(`${apiData}/tasks/${props.taskID}`, {
+      const data = await fetch(`${apiData}/tasks/${props.taskID}`, {
         method: 'PATCH',
         headers: {
           authorization: `Bearer ${jwt}`,
@@ -34,7 +34,6 @@ export function TaskCard(props) {
       props.taskChanged();
       setShowEditForm(false);
     } catch (err) {
-      dispatch(authSliceActions.setNotification('Error by editing.Please try again'));
       console.log(err);
     }
   };
@@ -54,7 +53,6 @@ export function TaskCard(props) {
       dispatch(authSliceActions.setNotification(''));
       props.taskChanged();
     } catch (err) {
-      dispatch(authSliceActions.setNotification('Error by deleting. Please try again'));
       console.log(err);
     }
   };

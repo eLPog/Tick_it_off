@@ -44,9 +44,8 @@ label {
     background-color: rgba(255,137,147,0.82);
     width: 30vw;
     animation: info-appear 0.3s ease-in forwards;
-    margin-bottom: 20px;
+    margin: 5rem auto 2rem auto;
     padding: 10px 15px;
-    box-shadow: 2px 3px 15px darkred;
     text-align: center;
     box-shadow: 2px 3px 15px darkred;
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import styles from './AddTask.module.css';
 import { Button } from '../../commons/Button/Button';
 import { authSliceActions } from '../../../store/authSlice';
@@ -54,7 +54,7 @@ export function AddTask() {
         }),
       });
       if (!res.ok) {
-        setErrorInfo('Error adding task');
+        setErrorInfo('Error. Check if title or content are not to long.');
         return;
       }
       dispatch(authSliceActions.setNotification(''));
@@ -77,6 +77,11 @@ export function AddTask() {
         </label>
         <textarea id="taskContent" onChange={contentHandler} />
         <Button text="Add" disabled={isButtonActive ? '' : 'disabled'} />
+        <NavLink
+          to="/tasks"
+        >
+          <Button text="Cancel" />
+        </NavLink>
       </form>
 
       {errorNotification && (

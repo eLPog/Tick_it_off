@@ -38,40 +38,44 @@ export function EditUserDataModal(props) {
       setInfo('Provide new values');
       return;
     }
-    const res = await fetch(`${apiData}/user`, {
-      method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        password,
-        name,
-        email,
-      }),
-    });
-    if (res.status === 500) {
-      setInfo('Unexpected server error. Please try again.');
-      return;
-    }
-    const data = await res.json();
-    dispatch(authSliceActions.setUserData({
-      name: data.userDataToFront.name,
-      email: data.userDataToFront.email,
-      lastLogin: userData.lastLogin,
-      registerAt: userData.registerAt,
-      userID: userData.userID,
-    }));
-    if (!data.newToken) {
-      props.showModalHandler();
-    } else {
-      setInfo('Please log in with new password');
-      setTimeout(() => {
-        dispatch(authSliceActions.setJwt(''));
-      }, 2000);
-      setTimeout(() => {
+    try {
+      const res = await fetch(`${apiData}/user`, {
+        method: 'PATCH',
+        headers: {
+          authorization: `Bearer ${jwt}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          password,
+          name,
+          email,
+        }),
+      });
+      if (res.status === 500) {
+        setInfo('Unexpected server error. Please try again.');
+        return;
+      }
+      const data = await res.json();
+      dispatch(authSliceActions.setUserData({
+        name: data.userDataToFront.name,
+        email: data.userDataToFront.email,
+        lastLogin: userData.lastLogin,
+        registerAt: userData.registerAt,
+        userID: userData.userID,
+      }));
+      if (!data.newToken) {
         props.showModalHandler();
-      }, 2000);
+      } else {
+        setInfo('Please log in with new password');
+        setTimeout(() => {
+          dispatch(authSliceActions.setJwt(''));
+        }, 2000);
+        setTimeout(() => {
+          props.showModalHandler();
+        }, 2000);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
