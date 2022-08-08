@@ -94,23 +94,14 @@ export function Header() {
   const isLogged = useSelector((state) => state.authSlice.isLogged);
   return (
     <section className={styles.headerContainer}>
-      <div className={styles.logo}>
+      <div>
         <NavLink to="/">Tick it off</NavLink>
       </div>
-      <h2>
-        What you can do tomorrow, do today and
-        <NavLink to="/"> Tick it off</NavLink>
-        .
-      </h2>
       <input id={styles.menuToggle} type="checkbox" />
       <label className={styles.menuButtonContainer} htmlFor={styles.menuToggle}>
         <div className={styles.menuButton} />
       </label>
       {isLogged ? menuForLogged : menuForNotLogged}
-      {/* <div className={styles.icon}> */}
-      {/*  <img src={icon1} alt="Task list icon" /> */}
-
-      {/* </div> */}
     </section>
   );
 }
