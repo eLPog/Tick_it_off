@@ -12,6 +12,7 @@
     box-sizing: content-box;
     transition: all 250ms ease;
     position:relative;
+    word-break: break-all;
 }
 .item::after{
     transition: all 250ms ease;
