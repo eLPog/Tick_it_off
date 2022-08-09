@@ -1,4 +1,4 @@
-import styles from './StartPage.module.css';
+import styles from './AboutApp.module.css';
 
 export function AboutApp() {
   return (
