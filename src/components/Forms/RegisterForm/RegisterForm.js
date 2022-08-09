@@ -51,7 +51,6 @@ export function RegisterForm() {
           password2,
         }),
       });
-      console.log(res);
       if (res.status === 404) {
         setInfo('We have some error. Please try again');
         return;
