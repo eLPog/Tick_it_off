@@ -1,7 +1,6 @@
 .footer {
     position: fixed;
     bottom:0;
-    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,4 +18,9 @@
 .logo {
     width: 3rem;
     height: 2rem;
+}
+@media only screen and (max-height: 400px) {
+ .footer {
+
+ }
 }
