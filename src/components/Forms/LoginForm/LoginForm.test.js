@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import store from '../../../store';
 import { LoginForm } from './LoginForm';
+
 
 describe('Check if LoginForm page is correctly rendered', () => {
   test('check if login input is correctly rendered', () => {
@@ -53,4 +54,5 @@ describe('Check if LoginForm page is correctly rendered', () => {
     expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute('disabled');
   });
+
 });
