@@ -11,7 +11,26 @@ This app is connected with https://github.com/eLPog/To_Do_List_Backend. For secu
 <li>The state of the application is based on Redux/Toolkit and locals states.</li>
 </ul><ul>
 <li>App is fetch all data from https://github.com/eLPog/To_Do_List_Backend. Pleace check SETUP INFOs</li>
-</ul><h2>Technologies Used</h2>
+  </ul>
+  <hr>
+  <p>Main menu - menu view depending on whether the user is logged in.</p><br>
+  <img src="https://user-images.githubusercontent.com/89840843/185792756-f1143c22-2f51-417b-b71e-8dd9d3a683a9.png"><br>
+  <p>Login formular with frontend validation - the main validation is included in the backend.</p><br>
+  <img src="https://user-images.githubusercontent.com/89840843/185792805-40c1b6cc-ee90-48f0-b5c3-db46a4456898.png"><br>
+  <p>Tasks list with edit, delete and checked functions.</p><br>
+  <img src="https://user-images.githubusercontent.com/89840843/185792861-c41fe5a3-2e8c-473d-b135-28310d489ca8.png"><br>
+  <h2>Code examples</h2>
+   <p>App component structure with pages redirect if user has no access.</p>
+  <img src="https://user-images.githubusercontent.com/89840843/185793341-9d397b58-b853-4ebc-8a03-898cf96fc2d6.png"><br>
+   <p>Redux toolkit thunk function to use async fetch. Function send users login data to backend and set status as logged if they are correct.</p>
+  <img src="https://user-images.githubusercontent.com/89840843/185793279-d6861e85-f38f-4e0f-9396-830794c8c5bb.png"><br>
+   <p>Functions check if  login values are correctly provided. The second function checks that both given passwords are the same - it does so with a delay to give the user time to enter the second password.</p>
+  <img src="https://user-images.githubusercontent.com/89840843/185793412-4f7c0b42-15b7-45af-a470-c2d6f30d9663.png"><br>
+   <h2>Test code example</h2>
+  <img src="https://user-images.githubusercontent.com/89840843/185793604-6f84bc32-cd33-42b5-a44c-ebcc954e6adc.png"><br>
+  <img src="https://user-images.githubusercontent.com/89840843/185793634-fd82899b-3c4c-4ce1-805f-d5a344dabb86.png"><br>
+  <hr>
+<h2>Technologies Used</h2>
 <hr><ul>
 <li>HTML</li>
 </ul><ul>
